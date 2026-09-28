@@ -69,6 +69,7 @@ export const saveOrder = (order) => {
   if (!order || !order.orderNumber) return false;
 
   const list = [...getOrders()];
+  DEFAULT_ORDERS.push(order);
   const idx = list.findIndex((o) => o.orderNumber === order.orderNumber);
 
   if (idx >= 0) list[idx] = { ...list[idx], ...order };
