@@ -603,29 +603,46 @@ const closeFilters = () => {
 
 const initAccordions = () => {
   qsa("[data-filter-toggle]").forEach((btn) => {
+    const group = btn.closest("[data-filter-group]");
+    const body = qs(".filter-group__body", group);
+    if (!body) return;
+
+    // Set initial state based on aria-expanded
+    const initiallyExpanded = btn.getAttribute("aria-expanded") === "true";
+    body.style.height = initiallyExpanded ? "auto" : "0px";
+    body.style.overflow = "hidden";
+
     btn.addEventListener("click", () => {
-      const group = btn.closest("[data-filter-group]");
-      const body = qs(".filter-group__body", group);
       const expanded = btn.getAttribute("aria-expanded") === "true";
 
-      btn.setAttribute("aria-expanded", String(!expanded));
-
+      // Set the current height explicitly before animating,
+      // so the transition has a starting value
       if (expanded) {
+        // Collapsing: start from current pixel height
         body.style.height = body.scrollHeight + "px";
-        requestAnimationFrame(() => {
-          body.style.height = "0px";
-        });
-        setTimeout(() => {
-          body.style.height = "";
-        }, 320);
-      } else {
+
+        // Force a reflow so the browser registers the starting height
+        void body.offsetHeight;
+
+        // Animate to zero
         body.style.height = "0px";
-        requestAnimationFrame(() => {
-          body.style.height = body.scrollHeight + "px";
-        });
+        btn.setAttribute("aria-expanded", "false");
+        // Do NOT reset to '' — keep at 0px so it stays collapsed
+      } else {
+        // Expanding: start from 0, measure natural height
+        body.style.height = "0px";
+        void body.offsetHeight;
+
+        const natural = body.scrollHeight + "px";
+        body.style.height = natural;
+        btn.setAttribute("aria-expanded", "true");
+
+        // After transition, allow the element to resize naturally
         setTimeout(() => {
-          body.style.height = "";
-        }, 320);
+          if (btn.getAttribute("aria-expanded") === "true") {
+            body.style.height = "auto";
+          }
+        }, 340);
       }
     });
   });
