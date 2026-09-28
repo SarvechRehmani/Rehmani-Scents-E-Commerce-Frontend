@@ -11,6 +11,8 @@ import { renderHeader } from "./header.js";
 import { renderFooter } from "./footer.js";
 import { initSearch } from "./search.js";
 import { initProductCards } from "./product-card.js";
+import { saveOrder } from "./order-store.js";
+
 import {
   qs,
   qsa,
@@ -287,16 +289,6 @@ const generateOrderNumber = () => {
   const d = String(now.getDate()).padStart(2, "0");
   const rand = Math.floor(1000 + Math.random() * 9000);
   return `RS-${y}${m}${d}-${rand}`;
-};
-
-const saveOrder = (order) => {
-  const list = storage.get(storage.keys.orders, []);
-  const orders = Array.isArray(list) ? list : [];
-  orders.unshift(order);
-
-  // Keep only the most recent 30 demo orders in this browser
-  const trimmed = orders.slice(0, 30);
-  storage.set(storage.keys.orders, trimmed);
 };
 
 const readFormValues = () => {

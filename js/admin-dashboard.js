@@ -2,7 +2,7 @@
    js/admin-dashboard.js
    Dashboard controller — stats, recent orders, alerts, snapshot.
    ============================================================ */
-
+import { getOrders, getOrderStats } from "./order-store.js";
 import { initTheme } from "./theme.js";
 import { renderAdminLayout } from "./admin-layout.js";
 import { requireAuth, getCurrentUser } from "./admin-auth.js";
@@ -75,8 +75,8 @@ function readWishlist() {
 
 function renderStats() {
   const productStats = getProductStats();
-  const orders = readOrders();
-  const wishlist = readWishlist();
+  const orders = getOrders();
+  const stats = getOrderStats();
 
   const totalRevenue = orders.reduce(
     (sum, o) => sum + (Number(o?.totals?.total) || 0),

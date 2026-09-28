@@ -4,6 +4,7 @@
    localStorage (rs_orders), and renders the full confirmation.
    Falls back to the most recent order if no query is present.
    ============================================================ */
+import { getOrderByNumber, getOrders } from "./order-store.js";
 
 import { initTheme } from "./theme.js";
 import { initCart, openCart } from "./cart.js";
@@ -45,23 +46,10 @@ const readOrders = () => {
   const raw = storage.get(storage.keys.orders, []);
   return Array.isArray(raw) ? raw : [];
 };
-
-const findOrder = (number) => {
-  if (!number) return null;
-  const orders = readOrders();
-  const target = String(number).trim().toUpperCase();
-  return (
-    orders.find(
-      (o) =>
-        String(o.orderNumber || "")
-          .trim()
-          .toUpperCase() === target,
-    ) || null
-  );
-};
+const findOrder = (number) => getOrderByNumber(number);
 
 const getLatestOrder = () => {
-  const orders = readOrders();
+  const orders = getOrders();
   return orders[0] || null;
 };
 

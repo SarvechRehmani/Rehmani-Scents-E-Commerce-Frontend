@@ -1,7 +1,17 @@
 /* ============================================================
    js/admin-orders.js
    Order list, filters, search, detail modal, status update.
+   Reads and writes through order-store.js so demo orders
+   come from orders.js and new orders are appended to storage.
    ============================================================ */
+
+import {
+  getOrders,
+  getOrderByNumber,
+  updateOrderStatus,
+  deleteOrder,
+  clearOrders,
+} from "./order-store.js";
 
 import { initTheme } from "./theme.js";
 import { renderAdminLayout } from "./admin-layout.js";
@@ -16,13 +26,10 @@ import {
   toast,
   getParam,
 } from "./utils.js";
-import { storage } from "./storage.js";
 
 /* ============================================================
-   CONSTANTS — declared BEFORE any function uses them
+   CONSTANTS
    ============================================================ */
-
-const ORDERS_KEY = "orders";
 
 const STATUS_LABELS = {
   placed: "Placed",
@@ -74,19 +81,6 @@ function initOrdersPage() {
 }
 
 /* ============================================================
-   READ / WRITE
-   ============================================================ */
-
-function readOrders() {
-  const raw = storage.get(ORDERS_KEY, []);
-  return Array.isArray(raw) ? raw : [];
-}
-
-function writeOrders(list) {
-  storage.set(ORDERS_KEY, Array.isArray(list) ? list : []);
-}
-
-/* ============================================================
    FILTERS
    ============================================================ */
 
@@ -94,7 +88,7 @@ function renderFilters() {
   const host = qs("[data-orders-filters]");
   if (!host) return;
 
-  const orders = readOrders();
+  const orders = getOrders();
   const counts = {
     all: orders.length,
     placed: orders.filter((o) => o.status === "placed").length,
@@ -167,7 +161,7 @@ function wireSearch() {
    ============================================================ */
 
 function getFilteredOrders() {
-  let list = readOrders();
+  let list = getOrders();
 
   if (currentFilter !== "all") {
     list = list.filter((o) => (o.status || "placed") === currentFilter);
@@ -312,8 +306,7 @@ function wireTableActions() {
       const num = del.dataset.orderDelete;
       if (!window.confirm(`Delete order ${num}? This cannot be undone.`))
         return;
-      const list = readOrders().filter((o) => o.orderNumber !== num);
-      writeOrders(list);
+      deleteOrder(num);
       toast("Order deleted");
       renderTable();
       renderFilters();
@@ -340,7 +333,7 @@ function closeModal(modal) {
 }
 
 function openOrder(orderNumber) {
-  const order = readOrders().find((o) => o.orderNumber === orderNumber);
+  const order = getOrderByNumber(orderNumber);
   if (!order) {
     toast("Order not found.", "error");
     return;
@@ -490,13 +483,11 @@ function wireDetailModal() {
       const newStatus = select?.value;
       if (!newStatus) return;
 
-      const list = readOrders();
-      const idx = list.findIndex((o) => o.orderNumber === activeOrderNumber);
-      if (idx === -1) return;
-
-      list[idx].status = newStatus;
-      list[idx].statusUpdatedAt = new Date().toISOString();
-      writeOrders(list);
+      const ok = updateOrderStatus(activeOrderNumber, newStatus);
+      if (!ok) {
+        toast("Could not update status.", "error");
+        return;
+      }
 
       toast(`Status updated to "${STATUS_LABELS[newStatus]}"`, "success");
       renderTable();
@@ -514,7 +505,7 @@ function wireBulkActions() {
   const exportBtn = qs("[data-orders-export]");
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
-      const orders = readOrders();
+      const orders = getOrders();
       if (!orders.length) {
         toast("No orders to export.", "error");
         return;
@@ -535,7 +526,7 @@ function wireBulkActions() {
   const clearBtn = qs("[data-orders-clear]");
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
-      const orders = readOrders();
+      const orders = getOrders();
       if (!orders.length) {
         toast("No orders to clear.");
         return;
@@ -546,7 +537,7 @@ function wireBulkActions() {
         )
       )
         return;
-      writeOrders([]);
+      clearOrders();
       toast("All orders cleared");
       renderTable();
       renderFilters();

@@ -4,7 +4,7 @@
    looks up the order in localStorage, renders a timeline.
    Also lists recent orders saved in this browser.
    ============================================================ */
-
+import { getOrderByNumber } from "./order-store.js";
 import { initTheme } from "./theme.js";
 import { initCart } from "./cart.js";
 import { initWishlist } from "./wishlist.js";
@@ -83,31 +83,17 @@ const readOrders = () => {
 };
 
 const findOrder = (orderNumber, phone) => {
-  const orders = readOrders();
-  const targetNum = String(orderNumber || "")
-    .trim()
-    .toUpperCase();
-  const targetPhone = normalizePhone(phone);
+  const order = getOrderByNumber(orderNumber);
+  if (!order) return null;
 
-  if (!targetNum) return null;
-
-  return (
-    orders.find((o) => {
-      const num = String(o.orderNumber || "")
-        .trim()
-        .toUpperCase();
-      if (num !== targetNum) return false;
-
-      // If a phone was provided, match it too
-      if (targetPhone) {
-        const oPhone = normalizePhone(o.customer?.phone || "");
-        return oPhone === targetPhone;
-      }
-      return true;
-    }) || null
-  );
+  // Optional: also verify phone
+  if (phone) {
+    const p1 = String(order.customer?.phone || "").replace(/[\s\-()]/g, "");
+    const p2 = String(phone).replace(/[\s\-()]/g, "");
+    return p1 === p2 ? order : null;
+  }
+  return order;
 };
-
 /* ============================================================
    FORMATTING
    ============================================================ */
