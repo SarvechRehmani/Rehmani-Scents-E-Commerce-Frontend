@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Bag — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Review your Rehmani Scents shopping bag, apply discount codes, and proceed to a secure demo checkout."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/cart.html" />
+    <meta name="robots" content="noindex,follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shopping Bag — Rehmani Scents" />
+    <meta
+      property="og:description"
+      content="Review your shopping bag and proceed to checkout."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1200&q=80"
+    />
+    <meta property="og:url" content="https://rehmaniscents.example/cart.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/cart-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       PAGE HEADER
+  ============================================================ -->
+      <section class="cart-hero">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Home</a></li>
+              <li aria-current="page">Shopping Bag</li>
+            </ol>
+          </nav>
+
+          <div class="cart-hero__row">
+            <div>
+              <p class="eyebrow">Your Selection</p>
+              <h1 class="cart-hero__title">Shopping Bag</h1>
+            </div>
+            <p class="cart-hero__count" data-cart-page-count aria-live="polite">
+              <strong>0</strong> items
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       CART — MAIN LAYOUT
+  ============================================================ -->
+      <section class="section cart-section">
+        <div class="container">
+          <!-- Free shipping progress bar (full-width) -->
+          <div class="ship-banner" data-ship-banner hidden>
+            <div class="ship-banner__text" data-ship-banner-text></div>
+            <div class="ship-banner__bar">
+              <span class="ship-banner__fill" data-ship-banner-fill></span>
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="cart-empty" data-cart-empty hidden>
+            <div class="cart-empty__icon">
+              <i data-lucide="shopping-bag"></i>
+            </div>
+            <h2 class="cart-empty__title">Your bag is empty</h2>
+            <p class="cart-empty__text">
+              Nothing here yet. Explore the collection and start building your
+              fragrance wardrobe.
+            </p>
+            <div class="cart-empty__actions">
+              <a class="btn btn--gold btn--lg" href="shop.html"
+                >Browse All Fragrances</a
+              >
+              <a class="btn btn--outline btn--lg" href="collections.html"
+                >View Collections</a
+              >
+            </div>
+          </div>
+
+          <!-- Filled cart -->
+          <div class="cart-layout" data-cart-layout hidden>
+            <!-- ================= ITEMS COLUMN ================= -->
+            <div class="cart-main">
+              <!-- Column headings (desktop) -->
+              <div class="cart-head">
+                <span class="cart-head__product">Product</span>
+                <span class="cart-head__price">Price</span>
+                <span class="cart-head__qty">Quantity</span>
+                <span class="cart-head__total">Total</span>
+              </div>
+
+              <!-- Items injected by JS -->
+              <ul class="cart-items" data-cart-items></ul>
+
+              <!-- Row actions -->
+              <div class="cart-row-actions">
+                <a class="cart-row-actions__link" href="shop.html">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Continue Shopping</span>
+                </a>
+                <button
+                  class="cart-row-actions__clear"
+                  type="button"
+                  data-cart-clear
+                >
+                  <i data-lucide="trash-2"></i>
+                  <span>Clear Bag</span>
+                </button>
+              </div>
+
+              <!-- Order notes -->
+              <div class="cart-notes">
+                <label class="cart-notes__label" for="cart-order-notes">
+                  Order Notes <span>(optional)</span>
+                </label>
+                <textarea
+                  id="cart-order-notes"
+                  class="textarea cart-notes__input"
+                  placeholder="Add any special instructions for your order — gift message, delivery preferences, etc."
+                  data-cart-notes
+                  rows="3"
+                ></textarea>
+                <p class="cart-notes__hint">
+                  Notes are saved with your bag for when you proceed to
+                  checkout.
+                </p>
+              </div>
+            </div>
+
+            <!-- ================= SUMMARY COLUMN ================= -->
+            <aside class="cart-summary" aria-label="Order summary">
+              <div class="cart-summary__card">
+                <h2 class="cart-summary__title">Order Summary</h2>
+
+                <!-- Discount code -->
+                <div class="cart-discount" data-cart-discount-block>
+                  <!-- Filled by JS -->
+                </div>
+
+                <!-- Totals -->
+                <dl class="cart-totals">
+                  <div class="cart-totals__row">
+                    <dt>Subtotal</dt>
+                    <dd data-cart-subtotal>Rs. 0</dd>
+                  </div>
+
+                  <div
+                    class="cart-totals__row cart-totals__row--discount"
+                    data-cart-discount-row
+                    hidden
+                  >
+                    <dt>
+                      Discount
+                      <span
+                        class="cart-totals__code"
+                        data-cart-discount-code
+                      ></span>
+                    </dt>
+                    <dd data-cart-discount-amount>−Rs. 0</dd>
+                  </div>
+
+                  <div class="cart-totals__row">
+                    <dt>Delivery</dt>
+                    <dd data-cart-shipping>Rs. 0</dd>
+                  </div>
+
+                  <div class="cart-totals__row cart-totals__row--divider">
+                    <dt>Total</dt>
+                    <dd class="cart-totals__grand" data-cart-total>Rs. 0</dd>
+                  </div>
+                </dl>
+
+                <!-- Actions -->
+                <div class="cart-summary__actions">
+                  <a
+                    class="btn btn--gold btn--lg btn--block"
+                    href="checkout.html"
+                  >
+                    Proceed To Checkout
+                    <i data-lucide="arrow-right"></i>
+                  </a>
+                </div>
+
+                <!-- Trust strip -->
+                <ul class="cart-summary__trust">
+                  <li>
+                    <i data-lucide="shield-check"></i>
+                    <span>Secure demo checkout</span>
+                  </li>
+                  <li>
+                    <i data-lucide="truck"></i>
+                    <span>Nationwide delivery</span>
+                  </li>
+                  <li>
+                    <i data-lucide="package"></i>
+                    <span>7-day exchange</span>
+                  </li>
+                </ul>
+
+                <p class="cart-summary__note">
+                  This is a demo storefront. No payment is processed and no real
+                  order is placed.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       RECOMMENDED / CROSS-SELL
+  ============================================================ -->
+      <section
+        class="section section--tinted cart-recommended"
+        data-cart-recommended
+        hidden
+      >
+        <div class="container">
+          <header class="section__head section__head--split">
+            <div>
+              <p class="eyebrow">Complete the Set</p>
+              <h2 class="section__title">You May Also Like</h2>
+            </div>
+            <a class="link-arrow" href="shop.html"
+              >View All <i data-lucide="arrow-right"></i
+            ></a>
+          </header>
+
+          <div class="rail" data-cart-recommended-rail></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/cart-page.js"></script>
+    <!-- ✅ yeh lagao -->
+  </body>
+</html>

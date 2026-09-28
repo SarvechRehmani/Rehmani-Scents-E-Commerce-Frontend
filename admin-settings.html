@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings — Rehmani Scents Admin</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#F8F6F1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="admin-body" data-admin-page="settings">
+    <div id="admin-shell"></div>
+
+    <main class="admin-main" id="main">
+      <header class="admin-page-head">
+        <div>
+          <p class="admin-page-head__eyebrow">Configuration</p>
+          <h1 class="admin-page-head__title">Store Settings</h1>
+          <p class="admin-page-head__sub">
+            Brand info, shipping thresholds, discount codes and demo data
+            controls.
+          </p>
+        </div>
+        <div class="admin-page-head__actions">
+          <button
+            class="btn btn--outline btn--sm"
+            type="button"
+            data-settings-reset
+          >
+            <i data-lucide="rotate-ccw"></i>
+            Reset All To Default
+          </button>
+          <button
+            class="btn btn--gold btn--sm"
+            type="button"
+            data-settings-save
+          >
+            <i data-lucide="check"></i>
+            Save Changes
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-notice">
+        <i data-lucide="info"></i>
+        <p>
+          <strong>Demo mode.</strong> Settings are stored in your browser. Some
+          fields (like brand name) require editing files directly to fully
+          propagate across the site. These settings affect runtime behaviour
+          where supported.
+        </p>
+      </div>
+
+      <form class="admin-settings" data-settings-form novalidate>
+        <!-- Brand -->
+        <section class="admin-panel">
+          <header class="admin-panel__head">
+            <h2 class="admin-panel__title">Brand</h2>
+          </header>
+          <div class="admin-panel__body">
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="s-brand-name"
+                  >Brand Name</label
+                >
+                <input
+                  class="input"
+                  id="s-brand-name"
+                  name="brandName"
+                  type="text"
+                  data-field="brandName"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="s-brand-tagline"
+                  >Tagline</label
+                >
+                <input
+                  class="input"
+                  id="s-brand-tagline"
+                  name="tagline"
+                  type="text"
+                  data-field="tagline"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="s-announcement"
+                >Announcement Bar Text</label
+              >
+              <input
+                class="input"
+                id="s-announcement"
+                name="announcement"
+                type="text"
+                data-field="announcement"
+              />
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="s-announcement-highlight"
+                >Announcement Highlight</label
+              >
+              <input
+                class="input"
+                id="s-announcement-highlight"
+                name="announcementHighlight"
+                type="text"
+                data-field="announcementHighlight"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="admin-panel">
+          <header class="admin-panel__head">
+            <h2 class="admin-panel__title">Contact</h2>
+          </header>
+          <div class="admin-panel__body">
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="s-email">Email</label>
+                <input
+                  class="input"
+                  id="s-email"
+                  name="email"
+                  type="email"
+                  data-field="email"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="s-phone">Phone</label>
+                <input
+                  class="input"
+                  id="s-phone"
+                  name="phone"
+                  type="tel"
+                  data-field="phone"
+                />
+              </div>
+            </div>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="s-whatsapp"
+                  >WhatsApp Number (digits only)</label
+                >
+                <input
+                  class="input"
+                  id="s-whatsapp"
+                  name="whatsapp"
+                  type="tel"
+                  placeholder="923000000000"
+                  data-field="whatsapp"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="s-location">Location</label>
+                <input
+                  class="input"
+                  id="s-location"
+                  name="location"
+                  type="text"
+                  data-field="location"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Shipping -->
+        <section class="admin-panel">
+          <header class="admin-panel__head">
+            <h2 class="admin-panel__title">Shipping</h2>
+          </header>
+          <div class="admin-panel__body">
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="s-free-threshold"
+                  >Free Shipping Threshold (Rs.)</label
+                >
+                <input
+                  class="input"
+                  id="s-free-threshold"
+                  name="freeThreshold"
+                  type="number"
+                  min="0"
+                  step="100"
+                  data-field="freeThreshold"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="s-standard-rate"
+                  >Standard Delivery Rate (Rs.)</label
+                >
+                <input
+                  class="input"
+                  id="s-standard-rate"
+                  name="standardRate"
+                  type="number"
+                  min="0"
+                  step="50"
+                  data-field="standardRate"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="s-eta"
+                >Estimated Delivery Text</label
+              >
+              <input
+                class="input"
+                id="s-eta"
+                name="eta"
+                type="text"
+                placeholder="2–4 working days"
+                data-field="eta"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Discount codes -->
+        <section class="admin-panel">
+          <header class="admin-panel__head">
+            <h2 class="admin-panel__title">Discount Codes</h2>
+            <button class="admin-panel__link" type="button" data-add-discount>
+              <i data-lucide="plus"></i> Add Code
+            </button>
+          </header>
+          <div class="admin-panel__body">
+            <div class="admin-discount-list" data-discount-list></div>
+          </div>
+        </section>
+
+        <!-- Data management -->
+        <section class="admin-panel">
+          <header class="admin-panel__head">
+            <h2 class="admin-panel__title">Data Management</h2>
+          </header>
+          <div class="admin-panel__body">
+            <div class="admin-data-actions">
+              <div class="admin-data-action">
+                <div>
+                  <strong>Export Store Data</strong>
+                  <span
+                    >Download a JSON file with products, articles and
+                    orders.</span
+                  >
+                </div>
+                <button
+                  class="btn btn--outline btn--sm"
+                  type="button"
+                  data-export-all
+                >
+                  <i data-lucide="download"></i>
+                  Export
+                </button>
+              </div>
+
+              <div class="admin-data-action">
+                <div>
+                  <strong>Import Store Data</strong>
+                  <span
+                    >Restore products, articles and orders from a JSON
+                    file.</span
+                  >
+                </div>
+                <label class="btn btn--outline btn--sm">
+                  <i data-lucide="upload"></i>
+                  Import
+                  <input
+                    type="file"
+                    accept="application/json"
+                    hidden
+                    data-import-input
+                  />
+                </label>
+              </div>
+
+              <div class="admin-data-action admin-data-action--danger">
+                <div>
+                  <strong>Clear All Local Data</strong>
+                  <span
+                    >Remove all admin edits, orders, wishlist and cart from this
+                    browser.</span
+                  >
+                </div>
+                <button
+                  class="btn btn--danger btn--sm"
+                  type="button"
+                  data-clear-all
+                >
+                  <i data-lucide="trash-2"></i>
+                  Clear
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </main>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/admin-settings.js"></script>
+  </body>
+</html>

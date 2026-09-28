@@ -1,0 +1,304 @@
+/* ============================================================
+   css/product-detail.css
+   PDP-specific styles layered on top of css/product.css.
+   Handles gallery, info panel, attribute grid, buy bar,
+   loading state, reviews summary.
+   ============================================================ */
+
+/* ================= LOADING + NOT FOUND ================= */
+.pdp-loading {
+  padding-block: clamp(5rem, 14vh, 8rem);
+}
+.pdp-loading__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  color: var(--color-muted);
+  font-size: var(--fs-sm);
+}
+
+/* ================= PDP MAIN SECTION ================= */
+.pdp-section-main {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* Override default sticky offset for header variants */
+.gallery {
+  position: sticky;
+  top: calc(var(--header-h) + 20px);
+}
+
+/* ================= INFO PANEL EXTRAS ================= */
+.pdp__stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-success);
+}
+.pdp__stock::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+}
+.pdp__stock.is-out {
+  color: var(--color-subtle);
+}
+
+/* Buy row: keep qty left, buttons fill remaining */
+.pdp__buy-row {
+  align-items: stretch;
+  margin-bottom: 0.75rem;
+}
+.pdp__buy-row .qty {
+  min-height: 46px;
+}
+.pdp__buy-row .btn {
+  min-height: 46px;
+}
+
+/* Wishlist button full width and styled */
+.pdp__secondary {
+  margin-bottom: 1.5rem;
+}
+.pdp__wish {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  gap: 0.55rem;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.pdp__wish:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.pdp__wish svg {
+  width: 16px;
+  height: 16px;
+}
+.pdp__wish.is-active {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+.pdp__wish.is-active svg {
+  fill: currentColor;
+}
+
+/* Attribute grid */
+.pdp__attrs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  padding: 1.3rem;
+  background: var(--color-surface-2);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: 1.4rem;
+}
+.pdp__attr {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: var(--hairline) dashed var(--color-border);
+}
+.pdp__attr:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.pdp__attr-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.pdp__attr-value {
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  text-align: right;
+  max-width: 60%;
+}
+
+/* ================= PDP SECTION HEADS ================= */
+.pdp-section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+}
+.pdp-section__note {
+  font-size: var(--fs-xs);
+  color: var(--color-subtle);
+  font-style: italic;
+  max-width: 62ch;
+}
+
+/* ================= REVIEWS SUMMARY ================= */
+.pdp-reviews__summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--color-surface-2);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius);
+}
+.pdp-reviews__score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.pdp-reviews__num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-accent);
+}
+.pdp-reviews__outof {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+.pdp-reviews__label {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+/* ================= REVIEW ITEM POLISH ================= */
+.review-item__head .stars {
+  margin-top: 0.2rem;
+}
+
+/* ================= BUY BAR ================= */
+.buy-bar {
+  transform: translateY(100%);
+  transition: transform 0.35s var(--ease-out);
+}
+.buy-bar.is-visible {
+  transform: none;
+}
+
+.buy-bar__info {
+  flex: 1;
+  min-width: 0;
+  padding-right: 0.6rem;
+}
+.buy-bar__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ================= ACCORDION PANEL BASE ================= */
+.accordion__panel {
+  height: 0;
+}
+
+/* ================= RETAIL POLISH ================= */
+.gallery__main img {
+  transition: transform 0.9s var(--ease-out);
+}
+
+/* Selected variant (dark mode contrast) */
+[data-theme="dark"] .variant.is-active {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .gallery {
+    position: static;
+  }
+  .pdp__buy-row--desktop {
+    display: none;
+  }
+  .pdp-section__head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .pdp-reviews__summary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pdp__attrs {
+    padding: 1.05rem;
+  }
+  .pdp__attr-value {
+    max-width: 55%;
+  }
+
+  .review-item {
+    padding: 1.1rem;
+  }
+
+  .pdp-section {
+    margin-top: 2.6rem;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery__thumbs {
+    gap: 0.5rem;
+  }
+  .gallery__thumb {
+    width: 64px;
+  }
+
+  .pdp__price {
+    gap: 0.5rem;
+  }
+  .pdp__price .price {
+    font-size: 1.4rem;
+  }
+
+  .pdp__attr {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+  .pdp__attr-value {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .buy-bar {
+    padding-block: 0.65rem;
+  }
+  .buy-bar .btn {
+    padding: 0.72rem 1.1rem;
+    font-size: 0.66rem;
+  }
+  .buy-bar__name {
+    font-size: 0.85rem;
+  }
+}

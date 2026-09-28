@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="The page you are looking for could not be found."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/error-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <section class="error-wrap">
+        <div class="container">
+          <div class="error-hero" data-reveal>
+            <p class="error-hero__code">404</p>
+            <p class="eyebrow">Page Not Found</p>
+            <h1 class="error-hero__title">This page has drifted away.</h1>
+            <p class="error-hero__text">
+              The link may be broken, the page may have been moved, or the URL
+              may have been typed incorrectly. Let us guide you back to
+              somewhere more useful.
+            </p>
+
+            <div class="error-hero__actions">
+              <a class="btn btn--gold btn--lg" href="index.html">
+                <i data-lucide="home"></i>
+                Return Home
+              </a>
+              <a class="btn btn--outline btn--lg" href="shop.html">
+                <i data-lucide="shopping-bag"></i>
+                Shop All Fragrances
+              </a>
+            </div>
+          </div>
+
+          <!-- Helpful routes -->
+          <div class="error-routes">
+            <a class="error-route" href="shop.html">
+              <span class="error-route__icon"
+                ><i data-lucide="sparkles"></i
+              ></span>
+              <div>
+                <strong>Browse Fragrances</strong>
+                <span>All current compositions in one place.</span>
+              </div>
+              <i data-lucide="arrow-right"></i>
+            </a>
+
+            <a class="error-route" href="collections.html">
+              <span class="error-route__icon"
+                ><i data-lucide="layers"></i
+              ></span>
+              <div>
+                <strong>Explore Collections</strong>
+                <span>Curated edits by mood and family.</span>
+              </div>
+              <i data-lucide="arrow-right"></i>
+            </a>
+
+            <a class="error-route" href="track-order.html">
+              <span class="error-route__icon"
+                ><i data-lucide="package-search"></i
+              ></span>
+              <div>
+                <strong>Track An Order</strong>
+                <span>Look up your demo order status.</span>
+              </div>
+              <i data-lucide="arrow-right"></i>
+            </a>
+
+            <a class="error-route" href="contact.html">
+              <span class="error-route__icon"><i data-lucide="mail"></i></span>
+              <div>
+                <strong>Contact Support</strong>
+                <span>We are happy to help you find it.</span>
+              </div>
+              <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Search prompt -->
+          <div class="error-search">
+            <p class="error-search__label">
+              Or search for what you were looking for
+            </p>
+            <button class="error-search__btn" type="button" data-search-open>
+              <i data-lucide="search"></i>
+              <span>Search fragrances, notes and families</span>
+              <kbd>/</kbd>
+            </button>
+          </div>
+
+          <!-- Popular products -->
+          <section class="section error-popular">
+            <header class="section__head section__head--split">
+              <div>
+                <p class="eyebrow">While You Are Here</p>
+                <h2 class="section__title">Popular Fragrances</h2>
+              </div>
+              <a class="link-arrow" href="shop.html"
+                >View All <i data-lucide="arrow-right"></i
+              ></a>
+            </header>
+
+            <div class="product-grid" data-error-grid data-columns="4"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/error-page.js"></script>
+  </body>
+</html>

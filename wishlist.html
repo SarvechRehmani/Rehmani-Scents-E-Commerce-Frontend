@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishlist — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Your saved Rehmani Scents fragrances. Move items to your bag or keep browsing for your signature scent."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/wishlist.html" />
+    <meta name="robots" content="noindex,follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/category.css" />
+
+    <link rel="stylesheet" href="css/wishlist-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       HERO
+  ============================================================ -->
+      <section class="category-hero" aria-label="Your wishlist">
+        <img
+          class="category-hero__media"
+          src="https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=1920&q=80"
+          alt="Fragrance campaign still with soft lighting"
+          fetchpriority="high"
+        />
+        <div class="category-hero__overlay"></div>
+        <div class="container category-hero__content">
+          <nav class="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Home</a></li>
+              <li aria-current="page">Wishlist</li>
+            </ol>
+          </nav>
+
+          <p class="eyebrow eyebrow--light">Saved For Later</p>
+          <h1 class="category-hero__title">Your Wishlist</h1>
+          <p class="category-hero__text">
+            Fragrances you have marked to revisit. Move them to your bag when
+            you are ready, or keep them here while you decide.
+          </p>
+
+          <ul class="category-hero__meta">
+            <li>
+              <i data-lucide="heart"></i>
+              <span data-wishlist-page-count><strong>0</strong> saved</span>
+            </li>
+            <li>
+              <i data-lucide="shopping-bag"></i>
+              <span>Move to bag anytime</span>
+            </li>
+            <li>
+              <i data-lucide="truck"></i>
+              <span>Nationwide Delivery</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       WISHLIST CONTENT
+  ============================================================ -->
+      <section class="section wishlist-section">
+        <div class="container">
+          <!-- ================= EMPTY STATE ================= -->
+          <div class="wishlist-empty" data-wishlist-empty hidden>
+            <div class="wishlist-empty__icon">
+              <i data-lucide="heart"></i>
+            </div>
+            <h2 class="wishlist-empty__title">Your wishlist is empty</h2>
+            <p class="wishlist-empty__text">
+              Tap the heart on any fragrance to save it here. Wishlist items
+              stay saved in this browser until you remove them.
+            </p>
+
+            <div class="wishlist-empty__actions">
+              <a class="btn btn--gold btn--lg" href="shop.html"
+                >Browse All Fragrances</a
+              >
+              <a class="btn btn--outline btn--lg" href="collections.html"
+                >View Collections</a
+              >
+            </div>
+          </div>
+
+          <!-- ================= FILLED WISHLIST ================= -->
+          <div class="wishlist-main" data-wishlist-main hidden>
+            <!-- Toolbar -->
+            <div class="wishlist-toolbar">
+              <p class="wishlist-toolbar__count">
+                <strong data-wishlist-count>0</strong>
+                <span data-wishlist-count-label>items</span> saved
+              </p>
+
+              <div class="wishlist-toolbar__actions">
+                <button
+                  class="wishlist-toolbar__action"
+                  type="button"
+                  data-wishlist-move-all
+                >
+                  <i data-lucide="shopping-bag"></i>
+                  Move All To Bag
+                </button>
+                <button
+                  class="wishlist-toolbar__action wishlist-toolbar__action--danger"
+                  type="button"
+                  data-wishlist-clear
+                >
+                  <i data-lucide="trash-2"></i>
+                  Clear Wishlist
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid -->
+            <ul class="wishlist-grid" data-wishlist-grid></ul>
+
+            <!-- Continue shopping -->
+            <div class="wishlist-continue">
+              <a class="link-arrow" href="shop.html">
+                Continue Shopping <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       RECOMMENDED
+  ============================================================ -->
+      <section
+        class="section section--tinted wishlist-recommended"
+        data-wishlist-recommended
+        hidden
+      >
+        <div class="container">
+          <header class="section__head section__head--split">
+            <div>
+              <p class="eyebrow">Might Also Like</p>
+              <h2 class="section__title">Fragrances To Consider</h2>
+            </div>
+            <a class="link-arrow" href="shop.html"
+              >View All <i data-lucide="arrow-right"></i
+            ></a>
+          </header>
+
+          <div class="rail" data-wishlist-recommended-rail></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/wishlist-page.js"></script>
+  </body>
+</html>

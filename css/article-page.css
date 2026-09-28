@@ -1,0 +1,286 @@
+/* ============================================================
+   css/article-page.css
+   Article detail — centered reading column, hero image,
+   rich body content, tags, share actions.
+   ============================================================ */
+
+/* ================= LOADING ================= */
+.article-loading {
+  padding-block: clamp(5rem, 14vh, 8rem);
+}
+
+/* ================= HERO ================= */
+.article-hero {
+  padding-block: 0.5rem clamp(2rem, 4vw, 3rem);
+  background: var(--color-bg);
+}
+.article-hero .breadcrumbs {
+  padding-block: 1.1rem 1.6rem;
+  justify-content: center;
+}
+
+.article-hero__inner {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.article-hero__cat {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1.2rem;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+}
+
+.article-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  margin-bottom: 1.2rem;
+  color: var(--color-text);
+}
+
+.article-hero__excerpt {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin: 0 auto 1.6rem;
+}
+
+.article-hero__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  font-size: var(--fs-xs);
+  color: var(--color-subtle);
+  letter-spacing: 0.04em;
+}
+
+/* ================= HERO IMAGE ================= */
+.article-hero-image {
+  max-width: 1080px;
+  margin: 0 auto clamp(2.4rem, 5vw, 3.6rem);
+  padding-inline: clamp(1.15rem, 4vw, 3rem);
+}
+
+.article-hero-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--color-bg-alt);
+}
+
+/* ================= BODY ================= */
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.95;
+  color: var(--color-muted);
+}
+
+.article-body > * + * {
+  margin-top: 1.4rem;
+}
+
+.article-body p {
+  font-size: 1.02rem;
+  line-height: 1.95;
+}
+
+.article-body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
+  color: var(--color-text);
+  margin-top: 2.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.article-body h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-top: 2.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: 1.4rem;
+  margin-block: 1.4rem;
+}
+.article-body ul li {
+  list-style: disc;
+  margin-bottom: 0.55rem;
+  padding-left: 0.2rem;
+}
+.article-body ol li {
+  list-style: decimal;
+  margin-bottom: 0.55rem;
+  padding-left: 0.2rem;
+}
+.article-body li::marker {
+  color: var(--color-accent);
+}
+
+.article-body blockquote {
+  margin: 2rem 0;
+  padding: 1.4rem 1.6rem;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.9vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.article-body strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.article-body em {
+  font-style: italic;
+}
+
+.article-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* ================= TAGS ================= */
+.article-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: 720px;
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+  padding-top: 1.4rem;
+  border-top: var(--hairline) solid var(--color-border);
+}
+.article-tags__label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-right: 0.4rem;
+}
+.article-tags__tag {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: var(--color-surface-2);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ================= ACTIONS ================= */
+.article-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 720px;
+  margin: 2rem auto 0;
+  padding-top: 1.4rem;
+  border-top: var(--hairline) solid var(--color-border);
+}
+
+.article-actions__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: var(--transition);
+}
+.article-actions__back svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--dur) var(--ease);
+}
+.article-actions__back:hover {
+  color: var(--color-accent);
+}
+.article-actions__back:hover svg {
+  transform: translateX(-3px);
+}
+
+.article-actions__share {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.article-actions__share-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-right: 0.4rem;
+}
+.article-actions__share .icon-btn {
+  border: var(--hairline) solid var(--color-border);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .article-hero__inner {
+    padding-inline: 0.2rem;
+  }
+  .article-hero__title {
+    font-size: clamp(1.7rem, 6vw, 2.4rem);
+  }
+  .article-body {
+    font-size: 0.98rem;
+  }
+  .article-body p {
+    font-size: 0.98rem;
+  }
+
+  .article-hero-image {
+    padding-inline: clamp(1.15rem, 4vw, 3rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .article-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .article-actions__share {
+    justify-content: flex-end;
+  }
+}

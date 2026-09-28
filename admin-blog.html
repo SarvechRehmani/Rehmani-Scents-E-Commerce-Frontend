@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Rehmani Scents Admin</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#F8F6F1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="admin-body" data-admin-page="blog">
+    <div id="admin-shell"></div>
+
+    <main class="admin-main" id="main">
+      <header class="admin-page-head">
+        <div>
+          <p class="admin-page-head__eyebrow">Journal</p>
+          <h1 class="admin-page-head__title">Blog Articles</h1>
+          <p class="admin-page-head__sub">
+            Manage the Fragrance Journal. New articles appear on the public blog
+            instantly.
+          </p>
+        </div>
+        <div class="admin-page-head__actions">
+          <button
+            class="btn btn--outline btn--sm"
+            type="button"
+            data-blog-reset
+          >
+            <i data-lucide="rotate-ccw"></i>
+            Reset To Default
+          </button>
+          <button class="btn btn--gold btn--sm" type="button" data-article-new>
+            <i data-lucide="plus"></i>
+            New Article
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-notice">
+        <i data-lucide="info"></i>
+        <p>
+          <strong>Demo mode.</strong> Articles are stored in your browser only.
+          New posts appear on
+          <a href="blog.html" target="_blank" rel="noopener">blog.html</a>. Use
+          "Reset To Default" to restore the six shipped articles.
+        </p>
+      </div>
+
+      <section class="admin-chips" data-blog-stats></section>
+
+      <section class="admin-panel">
+        <header class="admin-panel__head">
+          <h2 class="admin-panel__title">All Articles</h2>
+          <span class="admin-panel__count" data-blog-count>0 articles</span>
+        </header>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table" data-blog-table>
+            <thead>
+              <tr>
+                <th style="width: 80px"></th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Read Time</th>
+                <th>Featured</th>
+                <th style="width: 120px; text-align: right">Actions</th>
+              </tr>
+            </thead>
+            <tbody data-blog-tbody></tbody>
+          </table>
+
+          <div class="admin-empty" data-blog-empty hidden>
+            <i data-lucide="file-x"></i>
+            <p>No articles yet.</p>
+            <button
+              class="btn btn--gold btn--sm"
+              type="button"
+              data-article-new
+            >
+              Create Your First Article
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Article editor modal -->
+    <div class="admin-modal" data-article-modal aria-hidden="true">
+      <div class="admin-modal__scrim" data-article-close></div>
+
+      <div
+        class="admin-modal__panel admin-modal__panel--wide"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="article-modal-title"
+      >
+        <header class="admin-modal__head">
+          <div>
+            <p class="admin-modal__eyebrow" data-article-eyebrow>New Article</p>
+            <h2
+              class="admin-modal__title"
+              id="article-modal-title"
+              data-article-modal-title
+            >
+              Write An Article
+            </h2>
+          </div>
+          <button
+            class="icon-btn"
+            type="button"
+            data-article-close
+            aria-label="Close"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </header>
+
+        <form class="admin-modal__body" data-article-form novalidate>
+          <input type="hidden" name="originalId" data-field="originalId" />
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Article</h3>
+
+            <div class="field">
+              <label class="field__label" for="a-title"
+                >Title <span class="req">*</span></label
+              >
+              <input
+                class="input"
+                id="a-title"
+                name="title"
+                type="text"
+                required
+                data-field="title"
+              />
+              <span class="field__error" data-error="title"></span>
+            </div>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="a-category">Category</label>
+                <select
+                  class="select"
+                  id="a-category"
+                  name="category"
+                  data-field="category"
+                >
+                  <option value="guides">Fragrance Guides</option>
+                  <option value="tips">Perfume Tips</option>
+                  <option value="notes">Fragrance Notes</option>
+                  <option value="gifting">Gift Guides</option>
+                  <option value="care">Perfume Care</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="a-date">Date</label>
+                <input
+                  class="input"
+                  id="a-date"
+                  name="date"
+                  type="date"
+                  data-field="date"
+                />
+              </div>
+            </div>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="a-readtime"
+                  >Read Time (min)</label
+                >
+                <input
+                  class="input"
+                  id="a-readtime"
+                  name="readTime"
+                  type="number"
+                  min="1"
+                  step="1"
+                  data-field="readTime"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="a-author">Author</label>
+                <input
+                  class="input"
+                  id="a-author"
+                  name="author"
+                  type="text"
+                  data-field="author"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="a-excerpt">Excerpt</label>
+              <textarea
+                class="textarea"
+                id="a-excerpt"
+                name="excerpt"
+                rows="2"
+                data-field="excerpt"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="a-hero">Hero Image URL</label>
+              <input
+                class="input"
+                id="a-hero"
+                name="hero"
+                type="url"
+                placeholder="https://…"
+                data-field="hero"
+              />
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="a-body"
+                >Body (HTML allowed)</label
+              >
+              <textarea
+                class="textarea admin-code"
+                id="a-body"
+                name="body"
+                rows="12"
+                placeholder="<p>Your article body in HTML…</p>"
+                data-field="body"
+              ></textarea>
+              <span class="field__hint">
+                Use &lt;p&gt;, &lt;h2&gt;, &lt;ul&gt;, &lt;blockquote&gt; and
+                &lt;strong&gt; tags.
+              </span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="a-tags">Tags</label>
+              <input
+                class="input"
+                id="a-tags"
+                name="tags"
+                type="text"
+                placeholder="choosing, beginner, signature"
+                data-field="tags"
+              />
+              <span class="field__hint">Comma-separated.</span>
+            </div>
+
+            <label class="checkbox">
+              <input type="checkbox" name="featured" data-field="featured" />
+              <span>Feature on blog homepage</span>
+            </label>
+          </div>
+        </form>
+
+        <footer class="admin-modal__foot">
+          <button class="btn btn--outline" type="button" data-article-close>
+            Cancel
+          </button>
+          <button class="btn btn--gold" type="button" data-article-save>
+            <i data-lucide="check"></i>
+            <span>Save Article</span>
+          </button>
+        </footer>
+      </div>
+    </div>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/admin-blog.js"></script>
+  </body>
+</html>

@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products — Rehmani Scents Admin</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#F8F6F1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="admin-body" data-admin-page="products">
+    <div id="admin-shell"></div>
+
+    <main class="admin-main" id="main">
+      <header class="admin-page-head">
+        <div>
+          <p class="admin-page-head__eyebrow">Catalog</p>
+          <h1 class="admin-page-head__title">Products</h1>
+          <p class="admin-page-head__sub">
+            Add, edit and manage every fragrance in the store. Changes apply to
+            this browser only.
+          </p>
+        </div>
+        <div class="admin-page-head__actions">
+          <button
+            class="btn btn--outline btn--sm"
+            type="button"
+            data-products-reset
+          >
+            <i data-lucide="rotate-ccw"></i>
+            Reset To Default
+          </button>
+          <button class="btn btn--gold btn--sm" type="button" data-product-new>
+            <i data-lucide="plus"></i>
+            Add Product
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-notice">
+        <i data-lucide="info"></i>
+        <p>
+          <strong>Demo mode.</strong> Product edits are stored in your browser's
+          localStorage and override the shipped catalog on the storefront. Use
+          "Reset To Default" to restore the original 15 products.
+        </p>
+      </div>
+
+      <!-- Toolbar -->
+      <section class="admin-toolbar">
+        <div class="admin-toolbar__search">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search products by name, family or keyword…"
+            data-products-search
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="admin-toolbar__filters">
+          <label class="sr-only" for="product-category-filter">Category</label>
+          <select class="select" id="product-category-filter" data-products-cat>
+            <option value="all">All Categories</option>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Unisex">Unisex</option>
+          </select>
+
+          <label class="sr-only" for="product-sort">Sort</label>
+          <select class="select" id="product-sort" data-products-sort>
+            <option value="name">Name: A–Z</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Stats strip -->
+      <section class="admin-chips" data-products-stats></section>
+
+      <!-- Table -->
+      <section class="admin-panel">
+        <header class="admin-panel__head">
+          <h2 class="admin-panel__title">All Products</h2>
+          <span class="admin-panel__count" data-products-count>0 items</span>
+        </header>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table" data-products-table>
+            <thead>
+              <tr>
+                <th style="width: 70px"></th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Family</th>
+                <th>Price</th>
+                <th>Flags</th>
+                <th>Stock</th>
+                <th style="width: 120px; text-align: right">Actions</th>
+              </tr>
+            </thead>
+            <tbody data-products-tbody></tbody>
+          </table>
+
+          <div class="admin-empty" data-products-empty hidden>
+            <i data-lucide="package-x"></i>
+            <p>No products match your filters.</p>
+            <button
+              class="btn btn--outline btn--sm"
+              type="button"
+              data-products-clear
+            >
+              Clear Filters
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+     PRODUCT EDITOR MODAL
+============================================================ -->
+    <div class="admin-modal" data-product-modal aria-hidden="true">
+      <div class="admin-modal__scrim" data-modal-close></div>
+
+      <div
+        class="admin-modal__panel admin-modal__panel--wide"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-modal-title"
+      >
+        <header class="admin-modal__head">
+          <div>
+            <p class="admin-modal__eyebrow" data-modal-eyebrow>New Product</p>
+            <h2
+              class="admin-modal__title"
+              id="product-modal-title"
+              data-modal-title
+            >
+              Add A Product
+            </h2>
+          </div>
+          <button
+            class="icon-btn"
+            type="button"
+            data-modal-close
+            aria-label="Close"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </header>
+
+        <form class="admin-modal__body" data-product-form novalidate>
+          <input type="hidden" name="originalId" data-field="originalId" />
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Basic Info</h3>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="p-name"
+                  >Product Name <span class="req">*</span></label
+                >
+                <input
+                  class="input"
+                  id="p-name"
+                  name="name"
+                  type="text"
+                  required
+                  data-field="name"
+                />
+                <span class="field__error" data-error="name"></span>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="p-slug">Slug (URL id)</label>
+                <input
+                  class="input"
+                  id="p-slug"
+                  name="slug"
+                  type="text"
+                  data-field="slug"
+                />
+                <span class="field__hint"
+                  >Auto-generated from name if left blank.</span
+                >
+              </div>
+            </div>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="p-category"
+                  >Category <span class="req">*</span></label
+                >
+                <select
+                  class="select"
+                  id="p-category"
+                  name="category"
+                  required
+                  data-field="category"
+                >
+                  <option value="Men">Men</option>
+                  <option value="Women">Women</option>
+                  <option value="Unisex">Unisex</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="p-family"
+                  >Fragrance Family <span class="req">*</span></label
+                >
+                <input
+                  class="input"
+                  id="p-family"
+                  name="family"
+                  type="text"
+                  required
+                  placeholder="e.g. Aromatic Woody"
+                  data-field="family"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="p-short"
+                >Short Description</label
+              >
+              <input
+                class="input"
+                id="p-short"
+                name="shortDescription"
+                type="text"
+                data-field="shortDescription"
+              />
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="p-desc">Full Description</label>
+              <textarea
+                class="textarea"
+                id="p-desc"
+                name="description"
+                rows="3"
+                data-field="description"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Pricing &amp; Sizes</h3>
+
+            <div class="admin-form-row admin-form-row--3">
+              <div class="field">
+                <label class="field__label" for="p-price50"
+                  >50ml Price (Rs.) <span class="req">*</span></label
+                >
+                <input
+                  class="input"
+                  id="p-price50"
+                  name="price50"
+                  type="number"
+                  min="0"
+                  step="50"
+                  required
+                  data-field="price50"
+                />
+                <span class="field__error" data-error="price50"></span>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="p-compare50"
+                  >50ml Compare-At (Rs.)</label
+                >
+                <input
+                  class="input"
+                  id="p-compare50"
+                  name="compare50"
+                  type="number"
+                  min="0"
+                  step="50"
+                  data-field="compare50"
+                />
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="p-has100"
+                  >Include 100ml?</label
+                >
+                <select
+                  class="select"
+                  id="p-has100"
+                  name="has100"
+                  data-field="has100"
+                >
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="admin-form-row" data-100ml-row>
+              <div class="field">
+                <label class="field__label" for="p-price100"
+                  >100ml Price (Rs.)</label
+                >
+                <input
+                  class="input"
+                  id="p-price100"
+                  name="price100"
+                  type="number"
+                  min="0"
+                  step="50"
+                  data-field="price100"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="p-compare100"
+                  >100ml Compare-At (Rs.)</label
+                >
+                <input
+                  class="input"
+                  id="p-compare100"
+                  name="compare100"
+                  type="number"
+                  min="0"
+                  step="50"
+                  data-field="compare100"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Notes</h3>
+
+            <div class="field">
+              <label class="field__label" for="p-top">Top Notes</label>
+              <input
+                class="input"
+                id="p-top"
+                name="topNotes"
+                type="text"
+                placeholder="e.g. Bergamot, Pepper"
+                data-field="topNotes"
+              />
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="p-heart">Heart Notes</label>
+              <input
+                class="input"
+                id="p-heart"
+                name="heartNotes"
+                type="text"
+                placeholder="e.g. Lavender, Geranium"
+                data-field="heartNotes"
+              />
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="p-base">Base Notes</label>
+              <input
+                class="input"
+                id="p-base"
+                name="baseNotes"
+                type="text"
+                placeholder="e.g. Cedarwood, Amber"
+                data-field="baseNotes"
+              />
+            </div>
+          </div>
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Attributes</h3>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="p-longevity">Longevity</label>
+                <input
+                  class="input"
+                  id="p-longevity"
+                  name="longevity"
+                  type="text"
+                  placeholder="e.g. 6–8 hours"
+                  data-field="longevity"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="p-availability"
+                  >Availability</label
+                >
+                <select
+                  class="select"
+                  id="p-availability"
+                  name="availability"
+                  data-field="availability"
+                >
+                  <option value="in-stock">In Stock</option>
+                  <option value="out-of-stock">Out of Stock</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="p-occasion">Occasion</label>
+                <input
+                  class="input"
+                  id="p-occasion"
+                  name="occasion"
+                  type="text"
+                  placeholder="e.g. Office, Daily, Evening"
+                  data-field="occasion"
+                />
+                <span class="field__hint">Comma-separated.</span>
+              </div>
+              <div class="field">
+                <label class="field__label" for="p-season">Season</label>
+                <input
+                  class="input"
+                  id="p-season"
+                  name="season"
+                  type="text"
+                  placeholder="e.g. Spring, Autumn"
+                  data-field="season"
+                />
+                <span class="field__hint">Comma-separated.</span>
+              </div>
+            </div>
+
+            <div class="admin-form-row">
+              <div class="field">
+                <label class="field__label" for="p-rating">Rating (0–5)</label>
+                <input
+                  class="input"
+                  id="p-rating"
+                  name="rating"
+                  type="number"
+                  min="0"
+                  max="5"
+                  step="0.1"
+                  data-field="rating"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="p-reviews">Review Count</label>
+                <input
+                  class="input"
+                  id="p-reviews"
+                  name="reviewCount"
+                  type="number"
+                  min="0"
+                  step="1"
+                  data-field="reviewCount"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Images</h3>
+
+            <div class="field">
+              <label class="field__label" for="p-img1">Image URL 1</label>
+              <input
+                class="input"
+                id="p-img1"
+                name="img1"
+                type="url"
+                placeholder="https://…"
+                data-field="img1"
+              />
+            </div>
+            <div class="field">
+              <label class="field__label" for="p-img2">Image URL 2</label>
+              <input
+                class="input"
+                id="p-img2"
+                name="img2"
+                type="url"
+                placeholder="https://…"
+                data-field="img2"
+              />
+            </div>
+            <div class="field">
+              <label class="field__label" for="p-img3">Image URL 3</label>
+              <input
+                class="input"
+                id="p-img3"
+                name="img3"
+                type="url"
+                placeholder="https://…"
+                data-field="img3"
+              />
+            </div>
+
+            <div class="admin-image-preview" data-image-preview>
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Flags</h3>
+
+            <div class="admin-flag-grid">
+              <label class="checkbox">
+                <input type="checkbox" name="featured" data-field="featured" />
+                <span>Featured</span>
+              </label>
+              <label class="checkbox">
+                <input
+                  type="checkbox"
+                  name="bestSeller"
+                  data-field="bestSeller"
+                />
+                <span>Best Seller</span>
+              </label>
+              <label class="checkbox">
+                <input
+                  type="checkbox"
+                  name="newArrival"
+                  data-field="newArrival"
+                />
+                <span>New Arrival</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="admin-form-section">
+            <h3 class="admin-form-section__title">Search Keywords</h3>
+            <div class="field">
+              <label class="field__label" for="p-keywords">Keywords</label>
+              <input
+                class="input"
+                id="p-keywords"
+                name="keywords"
+                type="text"
+                placeholder="oud, saffron, rose, evening"
+                data-field="keywords"
+              />
+              <span class="field__hint"
+                >Comma-separated. Used on the search page.</span
+              >
+            </div>
+          </div>
+        </form>
+
+        <footer class="admin-modal__foot">
+          <button class="btn btn--outline" type="button" data-modal-close>
+            Cancel
+          </button>
+          <button class="btn btn--gold" type="button" data-product-save>
+            <i data-lucide="check"></i>
+            <span>Save Product</span>
+          </button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Delete confirmation modal -->
+    <div class="admin-modal" data-confirm-modal aria-hidden="true">
+      <div class="admin-modal__scrim" data-confirm-close></div>
+      <div
+        class="admin-modal__panel admin-modal__panel--sm"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="confirm-title"
+      >
+        <header class="admin-modal__head">
+          <h2 class="admin-modal__title" id="confirm-title">
+            Delete this product?
+          </h2>
+        </header>
+        <div class="admin-modal__body">
+          <p class="admin-confirm__text" data-confirm-text>
+            This action cannot be undone. The product will be removed from the
+            catalog.
+          </p>
+        </div>
+        <footer class="admin-modal__foot">
+          <button class="btn btn--outline" type="button" data-confirm-close>
+            Cancel
+          </button>
+          <button class="btn btn--danger" type="button" data-confirm-delete>
+            <i data-lucide="trash-2"></i>
+            <span>Delete</span>
+          </button>
+        </footer>
+      </div>
+    </div>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/admin-products.js"></script>
+  </body>
+</html>

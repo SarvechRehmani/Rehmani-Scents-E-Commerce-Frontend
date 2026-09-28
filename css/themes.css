@@ -1,0 +1,114 @@
+/* ============================================================
+   css/themes.css
+   Light + Dark palettes. Both are designed intentionally —
+   dark mode is NOT a filter or an inversion.
+   NOTE: the brief named "champagne gold" as the accent, so a
+   true warm gold is used here (no purple/indigo).
+   ============================================================ */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #f8f6f1; /* warm ivory */
+  --color-bg-alt: #f2efe8; /* tinted band */
+  --color-surface: #ffffff; /* main surface */
+  --color-surface-2: #faf8f4; /* nested surface */
+  --color-card: #ffffff;
+  --color-header: rgba(248, 246, 241, 0.86);
+  --color-header-solid: #f8f6f1;
+  --color-footer: #14120f;
+  --color-footer-text: #e9e3d8;
+  --color-footer-muted: #a49c8e;
+
+  --color-text: #171717; /* deep charcoal */
+  --color-muted: #6f6a61; /* warm gray */
+  --color-subtle: #9a948a;
+  --color-inverse: #f8f6f1;
+
+  --color-accent: #a8853f; /* champagne gold */
+  --color-accent-hover: #8e6f31;
+  --color-accent-soft: #f0e6d2;
+  --color-accent-text: #ffffff;
+
+  --color-border: #e2ddd2;
+  --color-border-strong: #cdc6b8;
+  --color-overlay: rgba(23, 20, 16, 0.52);
+
+  --color-success: #2f6b46;
+  --color-success-soft: #e6f0e9;
+  --color-danger: #a3352c;
+  --color-danger-soft: #f7e8e6;
+  --color-warning: #8a6117;
+
+  --color-badge-sale: #a3352c;
+  --color-badge-new: #171717;
+  --color-badge-gold: #a8853f;
+
+  --color-scrim: rgba(23, 20, 16, 0.5);
+  --color-skeleton: #e9e4da;
+  --color-skeleton-shine: #f4f0e8;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #101010;
+  --color-bg-alt: #151515;
+  --color-surface: #181818;
+  --color-surface-2: #1e1e1e;
+  --color-card: #1a1a1a;
+  --color-header: rgba(16, 16, 16, 0.84);
+  --color-header-solid: #101010;
+  --color-footer: #0b0b0b;
+  --color-footer-text: #ddd7cb;
+  --color-footer-muted: #8b857a;
+
+  --color-text: #f5f1e8; /* warm white */
+  --color-muted: #a09a90;
+  --color-subtle: #7a7469;
+  --color-inverse: #101010;
+
+  --color-accent: #d0aa63; /* lifted gold for dark bg */
+  --color-accent-hover: #e2c083;
+  --color-accent-soft: #2a2417;
+  --color-accent-text: #14120f;
+
+  --color-border: #2a2a2a;
+  --color-border-strong: #3a3a3a;
+  --color-overlay: rgba(0, 0, 0, 0.62);
+
+  --color-success: #7fbf97;
+  --color-success-soft: #17251d;
+  --color-danger: #e08b81;
+  --color-danger-soft: #2a1715;
+  --color-warning: #d9b26a;
+
+  --color-badge-sale: #b8503f;
+  --color-badge-new: #f5f1e8;
+  --color-badge-gold: #d0aa63;
+
+  --color-scrim: rgba(0, 0, 0, 0.66);
+  --color-skeleton: #232323;
+  --color-skeleton-shine: #2e2e2e;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 12px 38px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 26px 74px rgba(0, 0, 0, 0.6);
+  --shadow-drawer: -18px 0 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Smooth palette swap, but never fight reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  .site-header,
+  .drawer,
+  .scrim,
+  .to-top {
+    transition:
+      background-color var(--dur) var(--ease),
+      color var(--dur) var(--ease),
+      border-color var(--dur) var(--ease);
+  }
+}

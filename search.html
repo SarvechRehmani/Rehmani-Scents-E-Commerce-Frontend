@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Search results from the Rehmani Scents fragrance catalog — by name, note, family or occasion."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/search.html" />
+    <meta name="robots" content="noindex,follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/search-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       SEARCH HERO
+  ============================================================ -->
+      <section class="search-hero">
+        <div class="container search-hero__inner">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Home</a></li>
+              <li aria-current="page">Search</li>
+            </ol>
+          </nav>
+
+          <p class="eyebrow">Search</p>
+          <h1 class="search-hero__title">Find Your Fragrance</h1>
+
+          <!-- Search field -->
+          <form class="search-box" data-search-form role="search" novalidate>
+            <label class="sr-only" for="search-input">Search fragrances</label>
+            <i data-lucide="search"></i>
+            <input
+              id="search-input"
+              type="search"
+              name="q"
+              placeholder="Search by name, note, family, occasion…"
+              autocomplete="off"
+              data-search-field
+            />
+            <button
+              class="search-box__clear"
+              type="button"
+              aria-label="Clear search"
+              data-search-clear
+              hidden
+            >
+              <i data-lucide="x"></i>
+            </button>
+            <button class="btn btn--gold search-box__submit" type="submit">
+              Search
+            </button>
+          </form>
+
+          <!-- Popular search tags -->
+          <div class="search-suggestions">
+            <span class="search-suggestions__label">Popular searches</span>
+            <div class="search-suggestions__tags">
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="oud"
+              >
+                oud
+              </button>
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="fresh"
+              >
+                fresh
+              </button>
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="rose"
+              >
+                rose
+              </button>
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="amber"
+              >
+                amber
+              </button>
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="citrus"
+              >
+                citrus
+              </button>
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="leather"
+              >
+                leather
+              </button>
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="floral"
+              >
+                floral
+              </button>
+              <button
+                class="search-tag"
+                type="button"
+                data-search-suggest="woody"
+              >
+                woody
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       RESULTS
+  ============================================================ -->
+      <section class="section search-section">
+        <div class="container">
+          <!-- Meta / summary -->
+          <div class="search-meta" data-search-meta hidden>
+            <p class="search-meta__label">
+              <strong data-search-count>0</strong>
+              <span data-search-count-label>results</span>
+              for <em data-search-query></em>
+            </p>
+            <div class="search-meta__actions">
+              <label class="sr-only" for="search-sort">Sort results</label>
+              <select
+                id="search-sort"
+                class="select search-meta__sort"
+                data-search-sort
+              >
+                <option value="relevance">Sort: Relevance</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Category filter chips -->
+          <div class="search-filters" data-search-filters hidden>
+            <span class="search-filters__label">Filter by</span>
+            <div class="search-filters__chips" data-search-chips></div>
+          </div>
+
+          <!-- Grid -->
+          <div class="product-grid" data-search-grid data-columns="4"></div>
+
+          <!-- Empty state -->
+          <div class="search-empty" data-search-empty hidden>
+            <div class="search-empty__icon">
+              <i data-lucide="search-x"></i>
+            </div>
+            <h2 class="search-empty__title">No fragrances match</h2>
+            <p class="search-empty__text" data-search-empty-text>
+              We could not find any fragrances matching your search. Try a
+              different note, family or keyword.
+            </p>
+
+            <div class="search-empty__actions">
+              <button
+                class="btn btn--outline"
+                type="button"
+                data-search-clear-all
+              >
+                Clear Search
+              </button>
+              <a class="btn btn--gold" href="shop.html">
+                Browse All Fragrances
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       BROWSE INSTEAD (shown when no query)
+  ============================================================ -->
+      <section class="section search-browse" data-search-browse hidden>
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">Start Somewhere</p>
+            <h2 class="section__title">Browse By Direction</h2>
+            <p class="section__lead">
+              Not sure what to search for? These are the directions we return to
+              most often when composing.
+            </p>
+          </header>
+
+          <div class="search-directions">
+            <a class="search-direction" href="shop.html?family=Fresh+Citrus">
+              <span class="search-direction__icon"
+                ><i data-lucide="citrus"></i
+              ></span>
+              <h3 class="search-direction__title">Fresh &amp; Citrus</h3>
+              <p class="search-direction__text">
+                Clean, bright and easy to wear.
+              </p>
+              <span class="search-direction__cta"
+                >Browse <i data-lucide="arrow-right"></i
+              ></span>
+            </a>
+
+            <a class="search-direction" href="shop.html?family=Woody+Aromatic">
+              <span class="search-direction__icon"
+                ><i data-lucide="trees"></i
+              ></span>
+              <h3 class="search-direction__title">Woody &amp; Aromatic</h3>
+              <p class="search-direction__text">
+                Structured depth and quiet warmth.
+              </p>
+              <span class="search-direction__cta"
+                >Browse <i data-lucide="arrow-right"></i
+              ></span>
+            </a>
+
+            <a class="search-direction" href="shop.html?family=Floral">
+              <span class="search-direction__icon"
+                ><i data-lucide="flower-2"></i
+              ></span>
+              <h3 class="search-direction__title">Floral</h3>
+              <p class="search-direction__text">
+                Rose, jasmine and soft elegance.
+              </p>
+              <span class="search-direction__cta"
+                >Browse <i data-lucide="arrow-right"></i
+              ></span>
+            </a>
+
+            <a class="search-direction" href="shop.html?family=Woody+Oriental">
+              <span class="search-direction__icon"
+                ><i data-lucide="gem"></i
+              ></span>
+              <h3 class="search-direction__title">Oud &amp; Amber</h3>
+              <p class="search-direction__text">
+                Deep, resinous and evening-worthy.
+              </p>
+              <span class="search-direction__cta"
+                >Browse <i data-lucide="arrow-right"></i
+              ></span>
+            </a>
+          </div>
+
+          <div class="search-browse__cta">
+            <a class="link-arrow" href="shop.html">
+              View All Fragrances <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/search-page.js"></script>
+  </body>
+</html>

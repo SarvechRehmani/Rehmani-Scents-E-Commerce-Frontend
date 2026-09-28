@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Complete your Rehmani Scents order. Secure demo checkout with Cash on Delivery, Bank Transfer and Online Payment options."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/checkout.html" />
+    <meta name="robots" content="noindex,follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/checkout-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       PAGE HEADER
+  ============================================================ -->
+      <section class="checkout-hero">
+        <div class="container">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="cart.html">Shopping Bag</a></li>
+              <li aria-current="page">Checkout</li>
+            </ol>
+          </nav>
+
+          <div class="checkout-hero__row">
+            <div>
+              <p class="eyebrow">Final Step</p>
+              <h1 class="checkout-hero__title">Checkout</h1>
+            </div>
+
+            <!-- Progress steps -->
+            <ol class="checkout-steps" aria-label="Checkout progress">
+              <li class="checkout-steps__item is-done">
+                <span class="checkout-steps__dot"
+                  ><i data-lucide="check"></i
+                ></span>
+                <span class="checkout-steps__label">Bag</span>
+              </li>
+              <li class="checkout-steps__item is-current">
+                <span class="checkout-steps__dot">2</span>
+                <span class="checkout-steps__label">Details</span>
+              </li>
+              <li class="checkout-steps__item">
+                <span class="checkout-steps__dot">3</span>
+                <span class="checkout-steps__label">Confirm</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       EMPTY CART — redirect-friendly fallback
+  ============================================================ -->
+      <section class="section checkout-empty" data-checkout-empty hidden>
+        <div class="container">
+          <div class="cart-empty">
+            <div class="cart-empty__icon">
+              <i data-lucide="shopping-bag"></i>
+            </div>
+            <h2 class="cart-empty__title">Your bag is empty</h2>
+            <p class="cart-empty__text">
+              Add a fragrance to your bag before proceeding to checkout.
+            </p>
+            <div class="cart-empty__actions">
+              <a class="btn btn--gold btn--lg" href="shop.html"
+                >Browse Fragrances</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       MAIN CHECKOUT
+  ============================================================ -->
+      <section class="section checkout-section" data-checkout-main hidden>
+        <div class="container">
+          <!-- Demo notice -->
+          <div class="checkout-notice">
+            <i data-lucide="info"></i>
+            <p>
+              <strong>Demo checkout.</strong> No payment is processed, no
+              courier is booked, and no real order is placed. Your details are
+              stored only in your own browser.
+            </p>
+          </div>
+
+          <div class="checkout-layout">
+            <!-- ================= FORM COLUMN ================= -->
+            <form class="checkout-form" data-checkout-form novalidate>
+              <!-- ---------- 01 — Contact ---------- -->
+              <fieldset class="checkout-step">
+                <legend class="checkout-step__legend">
+                  <span class="checkout-step__num">01</span>
+                  <span class="checkout-step__title">Contact Information</span>
+                </legend>
+
+                <div class="form-row">
+                  <div class="field">
+                    <label class="field__label" for="co-name"
+                      >Full Name <span class="req">*</span></label
+                    >
+                    <input
+                      class="input"
+                      id="co-name"
+                      name="name"
+                      type="text"
+                      autocomplete="name"
+                      required
+                      data-validate="required"
+                    />
+                    <span class="field__error" data-error-for="name"></span>
+                  </div>
+
+                  <div class="field">
+                    <label class="field__label" for="co-email"
+                      >Email Address <span class="req">*</span></label
+                    >
+                    <input
+                      class="input"
+                      id="co-email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      required
+                      data-validate="required email"
+                    />
+                    <span class="field__error" data-error-for="email"></span>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="field">
+                    <label class="field__label" for="co-phone"
+                      >Phone Number <span class="req">*</span></label
+                    >
+                    <input
+                      class="input"
+                      id="co-phone"
+                      name="phone"
+                      type="tel"
+                      autocomplete="tel"
+                      required
+                      placeholder="03XX XXXXXXX"
+                      data-validate="required phone"
+                    />
+                    <span class="field__error" data-error-for="phone"></span>
+                    <span class="field__hint"
+                      >Format: 03XX XXXXXXX or +92 3XX XXXXXXX</span
+                    >
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- ---------- 02 — Shipping Address ---------- -->
+              <fieldset class="checkout-step">
+                <legend class="checkout-step__legend">
+                  <span class="checkout-step__num">02</span>
+                  <span class="checkout-step__title">Shipping Address</span>
+                </legend>
+
+                <div class="field">
+                  <label class="field__label" for="co-street"
+                    >House / Street / Apartment
+                    <span class="req">*</span></label
+                  >
+                  <input
+                    class="input"
+                    id="co-street"
+                    name="street"
+                    type="text"
+                    autocomplete="address-line1"
+                    required
+                    placeholder="House number, street name"
+                    data-validate="required"
+                  />
+                  <span class="field__error" data-error-for="street"></span>
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="co-area"
+                    >Area / Neighbourhood <span class="req">*</span></label
+                  >
+                  <input
+                    class="input"
+                    id="co-area"
+                    name="area"
+                    type="text"
+                    autocomplete="address-line2"
+                    required
+                    placeholder="Block, sector or locality"
+                    data-validate="required"
+                  />
+                  <span class="field__error" data-error-for="area"></span>
+                </div>
+
+                <div class="form-row form-row--3">
+                  <div class="field">
+                    <label class="field__label" for="co-city"
+                      >City <span class="req">*</span></label
+                    >
+                    <select
+                      class="select"
+                      id="co-city"
+                      name="city"
+                      required
+                      data-validate="required"
+                      data-city-select
+                    >
+                      <option value="">Select city</option>
+                    </select>
+                    <span class="field__error" data-error-for="city"></span>
+                  </div>
+
+                  <div class="field">
+                    <label class="field__label" for="co-province"
+                      >Province <span class="req">*</span></label
+                    >
+                    <select
+                      class="select"
+                      id="co-province"
+                      name="province"
+                      required
+                      data-validate="required"
+                      data-province-select
+                    >
+                      <option value="">Select province</option>
+                    </select>
+                    <span class="field__error" data-error-for="province"></span>
+                  </div>
+
+                  <div class="field">
+                    <label class="field__label" for="co-postal"
+                      >Postal Code</label
+                    >
+                    <input
+                      class="input"
+                      id="co-postal"
+                      name="postal"
+                      type="text"
+                      autocomplete="postal-code"
+                      inputmode="numeric"
+                      placeholder="Optional"
+                      data-validate="postal"
+                    />
+                    <span class="field__error" data-error-for="postal"></span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- ---------- 03 — Payment ---------- -->
+              <fieldset class="checkout-step">
+                <legend class="checkout-step__legend">
+                  <span class="checkout-step__num">03</span>
+                  <span class="checkout-step__title">Payment Method</span>
+                </legend>
+
+                <div class="pay-options" data-pay-options>
+                  <label class="pay-option">
+                    <input type="radio" name="payment" value="cod" checked />
+                    <div class="pay-option__body">
+                      <div class="pay-option__title">
+                        <i data-lucide="banknote"></i>
+                        Cash on Delivery
+                        <span class="pay-option__badge">Recommended</span>
+                      </div>
+                      <p class="pay-option__desc">
+                        Pay in cash when your order is delivered. Available
+                        across all major cities.
+                      </p>
+                    </div>
+                  </label>
+
+                  <label class="pay-option">
+                    <input type="radio" name="payment" value="bank" />
+                    <div class="pay-option__body">
+                      <div class="pay-option__title">
+                        <i data-lucide="building-2"></i>
+                        Bank Transfer
+                      </div>
+                      <p class="pay-option__desc">
+                        Demo only — bank details would be shared after order
+                        confirmation.
+                      </p>
+                    </div>
+                  </label>
+
+                  <label class="pay-option">
+                    <input type="radio" name="payment" value="online" />
+                    <div class="pay-option__body">
+                      <div class="pay-option__title">
+                        <i data-lucide="credit-card"></i>
+                        Online Payment
+                      </div>
+                      <p class="pay-option__desc">
+                        Demo only — no card details are collected or processed
+                        on this storefront.
+                      </p>
+                    </div>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- ---------- 04 — Notes ---------- -->
+              <fieldset class="checkout-step">
+                <legend class="checkout-step__legend">
+                  <span class="checkout-step__num">04</span>
+                  <span class="checkout-step__title">Order Notes</span>
+                  <span class="checkout-step__optional">(optional)</span>
+                </legend>
+
+                <div class="field">
+                  <label class="sr-only" for="co-notes">Order notes</label>
+                  <textarea
+                    class="textarea"
+                    id="co-notes"
+                    name="notes"
+                    placeholder="Add any special instructions — gift wrapping, delivery preferences, or a message for the recipient."
+                    data-checkout-notes
+                    rows="4"
+                  ></textarea>
+                </div>
+              </fieldset>
+
+              <!-- ---------- Actions ---------- -->
+              <div class="checkout-actions">
+                <a class="checkout-actions__back" href="cart.html">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Return to Bag</span>
+                </a>
+
+                <button
+                  class="btn btn--gold btn--lg checkout-actions__submit"
+                  type="submit"
+                  data-checkout-submit
+                >
+                  <i data-lucide="check"></i>
+                  <span>Place Order</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- ================= ORDER SUMMARY ================= -->
+            <aside class="checkout-summary" aria-label="Order summary">
+              <div class="checkout-summary__card">
+                <h2 class="checkout-summary__title">Order Summary</h2>
+
+                <!-- Items -->
+                <ul class="summary__items" data-checkout-items></ul>
+
+                <!-- Discount code -->
+                <div class="checkout-discount" data-checkout-discount></div>
+
+                <!-- Totals -->
+                <dl class="cart-totals">
+                  <div class="cart-totals__row">
+                    <dt>Subtotal</dt>
+                    <dd data-checkout-subtotal>Rs. 0</dd>
+                  </div>
+
+                  <div
+                    class="cart-totals__row cart-totals__row--discount"
+                    data-checkout-discount-row
+                    hidden
+                  >
+                    <dt>
+                      Discount
+                      <span
+                        class="cart-totals__code"
+                        data-checkout-discount-code
+                      ></span>
+                    </dt>
+                    <dd data-checkout-discount-amount>−Rs. 0</dd>
+                  </div>
+
+                  <div class="cart-totals__row">
+                    <dt>Delivery</dt>
+                    <dd data-checkout-shipping>Rs. 0</dd>
+                  </div>
+
+                  <div class="cart-totals__row cart-totals__row--divider">
+                    <dt>Total</dt>
+                    <dd class="cart-totals__grand" data-checkout-total>
+                      Rs. 0
+                    </dd>
+                  </div>
+                </dl>
+
+                <!-- Delivery estimate -->
+                <div class="checkout-summary__estimate">
+                  <i data-lucide="truck"></i>
+                  <div>
+                    <strong>Estimated delivery</strong>
+                    <span data-checkout-eta
+                      >2–4 working days after dispatch</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Trust -->
+                <ul
+                  class="cart-summary__trust"
+                  style="
+                    margin-top: 1.2rem;
+                    padding-top: 1.2rem;
+                    border-top: 1px solid var(--color-border);
+                  "
+                >
+                  <li>
+                    <i data-lucide="shield-check"></i
+                    ><span>Secure demo checkout</span>
+                  </li>
+                  <li>
+                    <i data-lucide="package"></i
+                    ><span>7-day exchange on unopened items</span>
+                  </li>
+                  <li>
+                    <i data-lucide="phone"></i
+                    ><span>Support: support@rehmaniscents.com</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- What happens next -->
+              <div class="checkout-summary__next">
+                <h3 class="checkout-summary__next-title">What happens next</h3>
+                <ol class="checkout-summary__next-list">
+                  <li>
+                    <span class="checkout-summary__next-num">1</span>
+                    <span
+                      >Your order is saved to this browser's local
+                      storage.</span
+                    >
+                  </li>
+                  <li>
+                    <span class="checkout-summary__next-num">2</span>
+                    <span
+                      >You are taken to a confirmation page with your demo order
+                      number.</span
+                    >
+                  </li>
+                  <li>
+                    <span class="checkout-summary__next-num">3</span>
+                    <span
+                      >You can track the order on the demo tracker using that
+                      number.</span
+                    >
+                  </li>
+                </ol>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/checkout-page.js"></script>
+  </body>
+</html>

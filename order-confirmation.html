@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmed — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Your Rehmani Scents demo order has been recorded. Review your order summary and next steps."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link
+      rel="canonical"
+      href="https://rehmaniscents.example/order-confirmation.html"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/confirmation-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       LOADING
+  ============================================================ -->
+      <section class="confirm-loading" data-confirm-loading aria-live="polite">
+        <div class="container">
+          <div class="pdp-loading__inner">
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Loading your order&hellip;</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       NOT FOUND
+  ============================================================ -->
+      <section class="confirm-missing" data-confirm-missing hidden>
+        <div class="container">
+          <div class="error-page">
+            <p class="error-page__code">?</p>
+            <h1 class="error-page__title">Order Not Found</h1>
+            <p class="error-page__text">
+              We couldn't find an order with that reference in this browser. If
+              you placed an order on a different device or cleared your browser
+              data, it won't be available here.
+            </p>
+            <div class="error-page__actions">
+              <a class="btn btn--gold" href="track-order.html"
+                >Try Order Tracker</a
+              >
+              <a class="btn btn--outline" href="shop.html">Continue Shopping</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       CONFIRMATION CONTENT
+  ============================================================ -->
+      <div data-confirm-content hidden>
+        <!-- ================= HERO ================= -->
+        <section class="confirm-hero">
+          <div class="container confirm-hero__inner">
+            <div class="confirm-hero__icon" aria-hidden="true">
+              <i data-lucide="check"></i>
+            </div>
+
+            <p class="eyebrow confirm-hero__eyebrow">Thank You</p>
+            <h1 class="confirm-hero__title">Your order has been recorded.</h1>
+            <p class="confirm-hero__lede" data-confirm-lede>
+              A confirmation has been saved to this browser. This is a demo
+              storefront — no email is sent and no payment is processed.
+            </p>
+
+            <!-- Order reference -->
+            <div class="confirm-ref">
+              <span class="confirm-ref__label">Order Reference</span>
+              <button
+                class="confirm-ref__value"
+                type="button"
+                data-confirm-copy
+                aria-label="Copy order number"
+              >
+                <span data-confirm-number>RS-000000-0000</span>
+                <i data-lucide="copy"></i>
+              </button>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="confirm-hero__actions">
+              <a
+                class="btn btn--gold btn--lg"
+                data-confirm-track
+                href="track-order.html"
+              >
+                <i data-lucide="package"></i>
+                Track This Order
+              </a>
+              <a class="btn btn--outline btn--lg" href="shop.html">
+                Continue Shopping
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SUMMARY + DETAILS ================= -->
+        <section class="section confirm-body">
+          <div class="container">
+            <div class="confirm-grid">
+              <!-- ---------- ORDER ITEMS ---------- -->
+              <div class="confirm-main">
+                <section class="confirm-block">
+                  <header class="confirm-block__head">
+                    <h2 class="confirm-block__title">Your Fragrances</h2>
+                    <span
+                      class="confirm-block__meta"
+                      data-confirm-item-count
+                    ></span>
+                  </header>
+                  <ul class="confirm-items" data-confirm-items></ul>
+                </section>
+
+                <!-- Delivery -->
+                <section class="confirm-block">
+                  <header class="confirm-block__head">
+                    <h2 class="confirm-block__title">Delivery Address</h2>
+                  </header>
+                  <div class="confirm-address" data-confirm-address></div>
+                </section>
+
+                <!-- Payment -->
+                <section class="confirm-block">
+                  <header class="confirm-block__head">
+                    <h2 class="confirm-block__title">Payment Method</h2>
+                  </header>
+                  <div class="confirm-payment" data-confirm-payment></div>
+                </section>
+
+                <!-- Notes (shown if any) -->
+                <section class="confirm-block" data-confirm-notes-block hidden>
+                  <header class="confirm-block__head">
+                    <h2 class="confirm-block__title">Order Notes</h2>
+                  </header>
+                  <p class="confirm-notes" data-confirm-notes></p>
+                </section>
+
+                <!-- What happens next -->
+                <section class="confirm-block confirm-block--tinted">
+                  <header class="confirm-block__head">
+                    <h2 class="confirm-block__title">What Happens Next</h2>
+                  </header>
+
+                  <ol class="confirm-next">
+                    <li>
+                      <span class="confirm-next__num">1</span>
+                      <div>
+                        <strong>Demo order saved</strong>
+                        <p>
+                          This order is stored only in your browser's local
+                          storage. No server or courier has been contacted.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="confirm-next__num">2</span>
+                      <div>
+                        <strong>Track it yourself</strong>
+                        <p>
+                          Use the demo tracker with your order number and phone
+                          to see a simulated progress timeline.
+                        </p>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="confirm-next__num">3</span>
+                      <div>
+                        <strong>Connect a backend later</strong>
+                        <p>
+                          The storefront is built so a real order API, payment
+                          gateway or courier integration could be plugged in
+                          without redesigning the checkout experience.
+                        </p>
+                      </div>
+                    </li>
+                  </ol>
+                </section>
+              </div>
+
+              <!-- ---------- SUMMARY SIDEBAR ---------- -->
+              <aside class="confirm-summary" aria-label="Order summary">
+                <div class="confirm-summary__card">
+                  <h2 class="confirm-summary__title">Order Summary</h2>
+
+                  <dl class="cart-totals">
+                    <div class="cart-totals__row">
+                      <dt>Subtotal</dt>
+                      <dd data-confirm-subtotal>Rs. 0</dd>
+                    </div>
+
+                    <div
+                      class="cart-totals__row cart-totals__row--discount"
+                      data-confirm-discount-row
+                      hidden
+                    >
+                      <dt>
+                        Discount
+                        <span
+                          class="cart-totals__code"
+                          data-confirm-discount-code
+                        ></span>
+                      </dt>
+                      <dd data-confirm-discount-amount>−Rs. 0</dd>
+                    </div>
+
+                    <div class="cart-totals__row">
+                      <dt>Delivery</dt>
+                      <dd data-confirm-shipping>Rs. 0</dd>
+                    </div>
+
+                    <div class="cart-totals__row cart-totals__row--divider">
+                      <dt>Total</dt>
+                      <dd class="cart-totals__grand" data-confirm-total>
+                        Rs. 0
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <!-- Meta -->
+                  <ul class="confirm-summary__meta">
+                    <li>
+                      <i data-lucide="calendar"></i>
+                      <div>
+                        <span>Order placed</span>
+                        <strong data-confirm-date>—</strong>
+                      </div>
+                    </li>
+                    <li>
+                      <i data-lucide="hash"></i>
+                      <div>
+                        <span>Reference</span>
+                        <strong data-confirm-number-small>—</strong>
+                      </div>
+                    </li>
+                    <li>
+                      <i data-lucide="truck"></i>
+                      <div>
+                        <span>Estimated delivery</span>
+                        <strong data-confirm-eta>—</strong>
+                      </div>
+                    </li>
+                    <li>
+                      <i data-lucide="circle-check-big"></i>
+                      <div>
+                        <span>Current status</span>
+                        <strong data-confirm-status>Order Placed</strong>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <a
+                    class="btn btn--outline btn--block"
+                    data-confirm-track
+                    href="track-order.html"
+                    style="margin-top: 1.2rem"
+                  >
+                    <i data-lucide="package"></i>
+                    Open Order Tracker
+                  </a>
+                </div>
+
+                <!-- Support card -->
+                <div class="confirm-support">
+                  <p class="confirm-support__title">Need help?</p>
+                  <p class="confirm-support__text">
+                    This is a demo storefront. For real orders, you would
+                    normally reach support via email or phone.
+                  </p>
+                  <a class="confirm-support__link" href="contact.html">
+                    <span>Contact Us</span>
+                    <i data-lucide="arrow-right"></i>
+                  </a>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= RECOMMENDED ================= -->
+        <section
+          class="section section--tinted"
+          data-confirm-recommended
+          hidden
+        >
+          <div class="container">
+            <header class="section__head section__head--split">
+              <div>
+                <p class="eyebrow">While You Wait</p>
+                <h2 class="section__title">You May Also Like</h2>
+              </div>
+              <a class="link-arrow" href="shop.html"
+                >View All <i data-lucide="arrow-right"></i
+              ></a>
+            </header>
+            <div class="rail" data-confirm-recommended-rail></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/confirmation-page.js"></script>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login — Rehmani Scents</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#F8F6F1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="admin-auth-body">
+    <!-- Theme toggle floating -->
+    <button
+      class="admin-theme-float"
+      type="button"
+      data-theme-toggle
+      aria-label="Toggle theme"
+    >
+      <i data-lucide="moon"></i>
+    </button>
+
+    <main class="admin-auth" id="main">
+      <div class="admin-auth__card">
+        <!-- Brand -->
+        <a
+          class="admin-auth__brand"
+          href="index.html"
+          aria-label="Rehmani Scents"
+        >
+          <span class="brand__name">Rehmani Scents</span>
+          <span class="brand__sub">Admin Panel</span>
+        </a>
+
+        <h1 class="admin-auth__title">Sign In</h1>
+        <p class="admin-auth__lede">
+          Demo admin panel. Credentials are hardcoded for this storefront only.
+        </p>
+
+        <!-- Demo hint -->
+        <div class="admin-hint">
+          <i data-lucide="info"></i>
+          <div>
+            <strong>Demo credentials</strong>
+            <span
+              >Username: <code>admin</code> · Password:
+              <code>rehmani2024</code></span
+            >
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="admin-auth__form" data-admin-login novalidate>
+          <div class="field">
+            <label class="field__label" for="admin-username">Username</label>
+            <input
+              class="input"
+              id="admin-username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              required
+              placeholder="admin"
+            />
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="admin-password">Password</label>
+            <div class="admin-pw-wrap">
+              <input
+                class="input"
+                id="admin-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                placeholder="••••••••"
+              />
+              <button
+                class="admin-pw-toggle"
+                type="button"
+                data-pw-toggle
+                aria-label="Show password"
+              >
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <label class="checkbox admin-auth__remember">
+            <input type="checkbox" name="remember" checked />
+            <span>Keep me signed in for 24 hours</span>
+          </label>
+
+          <p
+            class="admin-auth__error"
+            data-admin-error
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <button
+            class="btn btn--gold btn--lg btn--block admin-auth__submit"
+            type="submit"
+          >
+            <i data-lucide="log-in"></i>
+            <span>Sign In</span>
+          </button>
+        </form>
+
+        <div class="admin-auth__foot">
+          <a href="index.html">
+            <i data-lucide="arrow-left"></i>
+            <span>Return to storefront</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="admin-auth__disclaimer">
+        This admin panel is a frontend-only demo. Changes are stored in your
+        browser's localStorage and never sent to a server. Do not use real
+        credentials.
+      </p>
+    </main>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/admin-login.js"></script>
+  </body>
+</html>

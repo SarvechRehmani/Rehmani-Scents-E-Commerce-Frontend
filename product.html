@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Discover this Rehmani Scents fragrance — composed notes, longevity and occasion details."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/product.html" />
+
+    <meta property="og:type" content="product" />
+    <meta property="og:title" content="Rehmani Scents Fragrance" />
+    <meta
+      property="og:description"
+      content="Composed notes, longevity and occasion details."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80"
+    />
+    <meta
+      property="og:url"
+      content="https://rehmaniscents.example/product.html"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/product-editorial.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       LOADING
+  ============================================================ -->
+      <section class="pdp-loading" data-pdp-loading aria-live="polite">
+        <div class="container">
+          <div class="pdp-loading__inner">
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Loading fragrance&hellip;</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       NOT FOUND
+  ============================================================ -->
+      <section class="pdp-not-found" data-pdp-not-found hidden>
+        <div class="container">
+          <div class="error-page">
+            <p class="error-page__code">404</p>
+            <h1 class="error-page__title">Fragrance Not Found</h1>
+            <p class="error-page__text">
+              The fragrance you are looking for is not in our catalog. It may
+              have been renamed, retired, or the link may be incorrect.
+            </p>
+            <div class="error-page__actions">
+              <a class="btn btn--gold" href="shop.html"
+                >Browse All Fragrances</a
+              >
+              <a class="btn btn--outline" href="index.html">Return Home</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       PRODUCT CONTENT
+  ============================================================ -->
+      <div data-pdp-content hidden>
+        <!-- ================= BREADCRUMB RAIL ================= -->
+        <div class="pdp-rail">
+          <div class="container pdp-rail__inner">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <ol class="breadcrumbs" data-pdp-breadcrumbs>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop All</a></li>
+                <li aria-current="page">Product</li>
+              </ol>
+            </nav>
+            <div class="pdp-rail__nav">
+              <a class="pdp-rail__link" href="shop.html">
+                <i data-lucide="arrow-left"></i>
+                <span>Back to shop</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================
+         HERO — Asymmetric gallery + info
+    ============================================================ -->
+        <section class="pdp-hero" aria-label="Product overview">
+          <div class="container">
+            <div class="pdp-hero__grid">
+              <!-- ---------- GALLERY (left, sticky) ---------- -->
+              <div class="pdp-gallery">
+                <div
+                  class="pdp-gallery__rail"
+                  data-gallery-thumbs
+                  role="tablist"
+                  aria-label="Product images"
+                ></div>
+
+                <div class="pdp-gallery__stage">
+                  <div class="pdp-gallery__badges" data-gallery-badges></div>
+                  <img
+                    data-gallery-main
+                    src=""
+                    alt=""
+                    fetchpriority="high"
+                    data-fallback-name="Fragrance"
+                  />
+                  <div class="pdp-gallery__count">
+                    <span data-gallery-index>01</span>
+                    <span class="pdp-gallery__sep">/</span>
+                    <span data-gallery-total>01</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---------- INFO (right, scrolls) ---------- -->
+              <div class="pdp-info">
+                <p class="pdp-info__eyebrow" data-pdp-category></p>
+
+                <h1 class="pdp-info__title" data-pdp-title></h1>
+
+                <p class="pdp-info__lede" data-pdp-lede></p>
+
+                <div class="pdp-info__rating">
+                  <span class="stars stars--sm" aria-hidden="true">
+                    <i data-lucide="star"></i><i data-lucide="star"></i
+                    ><i data-lucide="star"></i><i data-lucide="star"></i
+                    ><i data-lucide="star"></i>
+                  </span>
+                  <span data-pdp-rating></span>
+                  <a
+                    href="#reviews"
+                    class="pdp-info__reviews-link"
+                    data-pdp-reviews-link
+                    >Read reviews</a
+                  >
+                </div>
+
+                <!-- Price -->
+                <div class="pdp-info__price-block">
+                  <div class="pdp-info__price-row">
+                    <span class="price" data-pdp-price></span>
+                    <span
+                      class="price price--old"
+                      data-pdp-compare
+                      hidden
+                    ></span>
+                    <span class="pdp-info__save" data-pdp-save hidden></span>
+                  </div>
+                  <p class="pdp-info__tax-note">Inclusive of all taxes</p>
+                </div>
+
+                <!-- Size -->
+                <div class="pdp-info__group">
+                  <div class="pdp-info__group-head">
+                    <span class="pdp-info__group-label">Size</span>
+                    <span
+                      class="pdp-info__group-hint"
+                      data-pdp-size-hint
+                    ></span>
+                  </div>
+                  <div
+                    class="pdp-sizes"
+                    data-pdp-volumes
+                    role="radiogroup"
+                    aria-label="Select size"
+                  ></div>
+                </div>
+
+                <!-- Qty + Add -->
+                <div class="pdp-info__buy">
+                  <div class="pdp-qty" data-pdp-qty>
+                    <button
+                      class="pdp-qty__btn"
+                      type="button"
+                      data-qty-dec
+                      aria-label="Decrease quantity"
+                    >
+                      <i data-lucide="minus"></i>
+                    </button>
+                    <label class="sr-only" for="pdp-qty-input">Quantity</label>
+                    <input
+                      class="pdp-qty__input"
+                      id="pdp-qty-input"
+                      type="number"
+                      value="1"
+                      min="1"
+                      max="99"
+                      inputmode="numeric"
+                      data-qty-input
+                    />
+                    <button
+                      class="pdp-qty__btn"
+                      type="button"
+                      data-qty-inc
+                      aria-label="Increase quantity"
+                    >
+                      <i data-lucide="plus"></i>
+                    </button>
+                  </div>
+
+                  <button
+                    class="btn btn--gold btn--lg pdp-info__add"
+                    type="button"
+                    data-pdp-add
+                  >
+                    <i data-lucide="shopping-bag"></i>
+                    <span>Add To Bag</span>
+                  </button>
+                </div>
+
+                <div class="pdp-info__sub-actions">
+                  <button
+                    class="btn btn--dark btn--lg"
+                    type="button"
+                    data-pdp-buy-now
+                  >
+                    Buy Now
+                  </button>
+                  <button
+                    class="pdp-info__wish"
+                    type="button"
+                    data-pdp-wishlist
+                    data-wishlist-btn
+                  >
+                    <i data-lucide="heart"></i>
+                    <span data-pdp-wish-label>Wishlist</span>
+                  </button>
+                </div>
+
+                <!-- Availability -->
+                <p class="pdp-info__stock" data-pdp-stock></p>
+
+                <!-- Trust strip -->
+                <ul class="pdp-trust">
+                  <li>
+                    <i data-lucide="truck"></i>
+                    <div>
+                      <strong>2–4 day delivery</strong>
+                      <span>Across Pakistan</span>
+                    </div>
+                  </li>
+                  <li>
+                    <i data-lucide="shield-check"></i>
+                    <div>
+                      <strong>Sealed &amp; authentic</strong>
+                      <span>Quality checked</span>
+                    </div>
+                  </li>
+                  <li>
+                    <i data-lucide="package"></i>
+                    <div>
+                      <strong>7-day exchange</strong>
+                      <span>On unopened items</span>
+                    </div>
+                  </li>
+                </ul>
+
+                <!-- Spec strip -->
+                <div class="pdp-specs" data-pdp-specs></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+         CHAPTER 01 — THE COMPOSITION (dark, full-bleed)
+    ============================================================ -->
+        <section
+          class="pdp-chapter pdp-chapter--dark"
+          aria-labelledby="pdp-chapter-01"
+        >
+          <div class="container">
+            <header class="pdp-chapter__head">
+              <span class="pdp-chapter__num">01</span>
+              <div>
+                <p class="pdp-chapter__eyebrow">The Composition</p>
+                <h2 id="pdp-chapter-01" class="pdp-chapter__title">
+                  Three layers, unfolding slowly.
+                </h2>
+              </div>
+            </header>
+
+            <div class="pdp-pyramid" data-pdp-pyramid>
+              <!-- Filled by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+         CHAPTER 02 — WEAR IT
+    ============================================================ -->
+        <section class="pdp-chapter" aria-labelledby="pdp-chapter-02">
+          <div class="container">
+            <header class="pdp-chapter__head">
+              <span class="pdp-chapter__num">02</span>
+              <div>
+                <p class="pdp-chapter__eyebrow">Wear It</p>
+                <h2 id="pdp-chapter-02" class="pdp-chapter__title">
+                  Where it belongs.
+                </h2>
+              </div>
+            </header>
+
+            <div class="pdp-wear" data-pdp-wear>
+              <!-- Filled by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+         CHAPTER 03 — DETAILS (accordions)
+    ============================================================ -->
+        <section
+          class="pdp-chapter pdp-chapter--tinted"
+          aria-labelledby="pdp-chapter-03"
+        >
+          <div class="container">
+            <header class="pdp-chapter__head">
+              <span class="pdp-chapter__num">03</span>
+              <div>
+                <p class="pdp-chapter__eyebrow">The Details</p>
+                <h2 id="pdp-chapter-03" class="pdp-chapter__title">
+                  Everything else.
+                </h2>
+              </div>
+            </header>
+
+            <div class="pdp-details">
+              <div class="accordion pdp-details__accordion" data-pdp-accordion>
+                <div class="accordion__item">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <span class="accordion__index">A</span>
+                    <span class="accordion__label">Product Details</span>
+                    <i data-lucide="plus"></i>
+                  </button>
+                  <div class="accordion__panel">
+                    <div class="accordion__inner" data-accordion-details></div>
+                  </div>
+                </div>
+
+                <div class="accordion__item">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <span class="accordion__index">B</span>
+                    <span class="accordion__label">How To Wear</span>
+                    <i data-lucide="plus"></i>
+                  </button>
+                  <div class="accordion__panel">
+                    <div class="accordion__inner">
+                      Apply to pulse points — the wrists, the base of the throat
+                      and behind the ears. Warmth from these areas helps the
+                      fragrance unfold slowly. Avoid rubbing the wrists
+                      together; it crushes the top notes and shortens the
+                      opening. For extended wear, apply after moisturising —
+                      hydrated skin holds fragrance longer.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion__item">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <span class="accordion__index">C</span>
+                    <span class="accordion__label"
+                      >Ingredients &amp; Disclaimer</span
+                    >
+                    <i data-lucide="plus"></i>
+                  </button>
+                  <div class="accordion__panel">
+                    <div class="accordion__inner">
+                      <p>
+                        <strong>Demo text.</strong> Rehmani Scents fragrances
+                        are composed of alcohol denat., fragrance (parfum),
+                        aqua, limonene, linalool, citral, geraniol, coumarin.
+                        This is an illustrative ingredient list for a fictional
+                        demo catalog and does not represent an actual product
+                        formulation.
+                      </p>
+                      <p style="margin-top: 0.9rem">
+                        For external use only. Avoid contact with eyes and
+                        broken skin. Discontinue use if irritation occurs.
+                        Flammable — keep away from open flames and store below
+                        25&deg;C. Keep out of reach of children.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion__item">
+                  <button
+                    class="accordion__trigger"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    <span class="accordion__index">D</span>
+                    <span class="accordion__label">Shipping &amp; Returns</span>
+                    <i data-lucide="plus"></i>
+                  </button>
+                  <div class="accordion__panel">
+                    <div class="accordion__inner">
+                      Orders are typically dispatched within 1 working day.
+                      Standard delivery takes 2–4 working days across Pakistan,
+                      with delivery to major cities usually faster.
+                      Complimentary delivery applies to qualifying orders above
+                      the free-shipping threshold. Unopened, sealed items may be
+                      exchanged within 7 days of delivery; opened fragrances
+                      cannot be returned for hygiene reasons.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="pdp-details__aside">
+                <p class="pdp-details__note">
+                  All fragrance listings on this storefront are fictional demo
+                  catalog entries. Prices, notes and performance descriptions
+                  are illustrative and not verified.
+                </p>
+                <a class="pdp-details__link" href="faq.html">
+                  <span>Have a question?</span>
+                  <i data-lucide="arrow-right"></i>
+                </a>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+         REVIEWS
+    ============================================================ -->
+        <section
+          class="pdp-chapter"
+          id="reviews"
+          aria-labelledby="pdp-reviews-heading"
+        >
+          <div class="container">
+            <header class="pdp-chapter__head">
+              <span class="pdp-chapter__num">04</span>
+              <div>
+                <p class="pdp-chapter__eyebrow">What People Say</p>
+                <h2 id="pdp-reviews-heading" class="pdp-chapter__title">
+                  Notes from the room.
+                </h2>
+                <p class="pdp-chapter__note">
+                  Demo reviews — illustrative content, not verified customer
+                  feedback.
+                </p>
+              </div>
+            </header>
+
+            <div class="pdp-reviews">
+              <aside class="pdp-reviews__summary" data-reviews-summary></aside>
+              <div class="pdp-reviews__list" data-pdp-reviews></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+         RELATED
+    ============================================================ -->
+        <section
+          class="pdp-chapter pdp-chapter--tinted"
+          aria-labelledby="pdp-related-heading"
+        >
+          <div class="container">
+            <header class="pdp-chapter__head pdp-chapter__head--split">
+              <div class="pdp-chapter__head-group">
+                <span class="pdp-chapter__num">05</span>
+                <div>
+                  <p class="pdp-chapter__eyebrow">Continue Exploring</p>
+                  <h2 id="pdp-related-heading" class="pdp-chapter__title">
+                    You may also like.
+                  </h2>
+                </div>
+              </div>
+              <a class="link-arrow" href="shop.html"
+                >View All <i data-lucide="arrow-right"></i
+              ></a>
+            </header>
+
+            <div class="rail pdp-related-rail" data-pdp-related></div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+         STICKY MOBILE BUY BAR
+    ============================================================ -->
+        <div class="buy-bar" data-buy-bar>
+          <div class="buy-bar__info">
+            <p class="buy-bar__name" data-buy-bar-name>Fragrance</p>
+            <p class="buy-bar__price" data-buy-bar-price>
+              Rs. 0
+              <small data-buy-bar-size>50ml</small>
+            </p>
+          </div>
+          <button class="btn btn--gold" type="button" data-pdp-add-mobile>
+            <i data-lucide="shopping-bag"></i>
+            Add
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================
+       RECENTLY VIEWED
+  ============================================================ -->
+      <section class="section section--tinted" data-recently-viewed hidden>
+        <div class="container">
+          <header class="section__head section__head--split">
+            <div>
+              <p class="eyebrow">Continue Browsing</p>
+              <h2 class="section__title">Recently Viewed</h2>
+            </div>
+          </header>
+          <div class="rail" data-recently-viewed-rail></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/product-editorial.js"></script>
+  </body>
+</html>

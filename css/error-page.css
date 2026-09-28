@@ -1,0 +1,207 @@
+/* ============================================================
+   css/error-page.css
+   404 page — large code, helpful routes, search prompt,
+   popular products.
+   ============================================================ */
+
+.error-wrap {
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(3rem, 6vw, 5rem);
+}
+
+/* ================= HERO ================= */
+.error-hero {
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.error-hero__code {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(6rem, 18vw, 12rem);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  color: var(--color-accent);
+  opacity: 0.32;
+  margin-bottom: 1rem;
+}
+
+.error-hero .eyebrow {
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.error-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.1rem;
+}
+
+.error-hero__text {
+  font-size: var(--fs-sm);
+  line-height: 1.85;
+  color: var(--color-muted);
+  max-width: 52ch;
+  margin: 0 auto 2rem;
+}
+
+.error-hero__actions {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.error-hero__actions .btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ================= ROUTES ================= */
+.error-routes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.7rem, 1.6vw, 1.1rem);
+  max-width: 780px;
+  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+}
+
+.error-route {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 1.1rem 1.2rem;
+  background: var(--color-surface);
+  border: var(--hairline) solid var(--color-border);
+  transition: var(--transition);
+}
+.error-route:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.error-route__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-radius: var(--radius);
+  flex: none;
+}
+.error-route__icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5;
+}
+
+.error-route strong {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+}
+.error-route span {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+.error-route > svg {
+  width: 15px;
+  height: 15px;
+  color: var(--color-muted);
+  transition:
+    transform var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+.error-route:hover > svg {
+  color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+/* ================= SEARCH PROMPT ================= */
+.error-search {
+  max-width: 620px;
+  margin: clamp(2rem, 5vw, 3rem) auto 0;
+  text-align: center;
+}
+
+.error-search__label {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+
+.error-search__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 1rem 1.15rem;
+  background: var(--color-surface);
+  border: var(--hairline) solid var(--color-border);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.error-search__btn:hover {
+  border-color: var(--color-accent);
+}
+.error-search__btn > svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--color-muted);
+}
+.error-search__btn span {
+  flex: 1;
+  font-size: var(--fs-sm);
+  color: var(--color-subtle);
+}
+.error-search__btn kbd {
+  flex: none;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.5rem;
+  background: var(--color-bg-alt);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius-xs);
+  color: var(--color-muted);
+}
+
+/* ================= POPULAR ================= */
+.error-popular {
+  padding-top: clamp(3rem, 7vw, 5rem);
+  margin-top: clamp(3rem, 7vw, 5rem);
+  border-top: var(--hairline) solid var(--color-border);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .error-routes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .error-hero__actions {
+    flex-direction: column;
+  }
+  .error-hero__actions .btn {
+    width: 100%;
+  }
+
+  .error-search__btn kbd {
+    display: none;
+  }
+}

@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Order — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Check the status of your Rehmani Scents demo order. Enter your order number and phone to see the progress timeline."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link
+      rel="canonical"
+      href="https://rehmaniscents.example/track-order.html"
+    />
+    <meta name="robots" content="noindex,follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/category.css" />
+    <link rel="stylesheet" href="css/track-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       PAGE HERO
+  ============================================================ -->
+      <section class="category-hero" aria-label="Track your order">
+        <img
+          class="category-hero__media"
+          src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=1920&q=80"
+          alt="Perfume bottle on a marble surface with soft lighting"
+          fetchpriority="high"
+        />
+        <div class="category-hero__overlay"></div>
+        <div class="container category-hero__content">
+          <nav class="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Home</a></li>
+              <li aria-current="page">Track Order</li>
+            </ol>
+          </nav>
+
+          <p class="eyebrow eyebrow--light">Order Status</p>
+          <h1 class="category-hero__title">Track Your Order</h1>
+          <p class="category-hero__text">
+            Enter your order reference and the phone number you used at checkout
+            to see the progress of your demo order.
+          </p>
+
+          <ul class="category-hero__meta">
+            <li>
+              <i data-lucide="search"></i>
+              <span>Look up by reference + phone</span>
+            </li>
+            <li>
+              <i data-lucide="package"></i>
+              <span>Five-stage timeline</span>
+            </li>
+            <li>
+              <i data-lucide="shield-check"></i>
+              <span>Stored in this browser only</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Demo notice moved below hero -->
+      <section class="track-notice-section">
+        <div class="container">
+          <div class="track-notice">
+            <i data-lucide="info"></i>
+            <p>
+              <strong>Demo tracker.</strong> This tool reads orders saved in
+              your browser's local storage only. It is not connected to any
+              courier service or live logistics API.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       TRACKING FORM
+  ============================================================ -->
+      <section class="section track-section">
+        <div class="container">
+          <div class="track-layout">
+            <!-- ================= FORM ================= -->
+            <div class="track-form-card">
+              <h2 class="track-form-card__title">Enter Order Details</h2>
+
+              <form class="track-form" data-track-form novalidate>
+                <div class="field">
+                  <label class="field__label" for="track-order">
+                    Order Reference <span class="req">*</span>
+                  </label>
+                  <input
+                    class="input"
+                    id="track-order"
+                    name="order"
+                    type="text"
+                    placeholder="RS-YYMMDD-XXXX"
+                    autocomplete="off"
+                    required
+                    data-track-order
+                  />
+                  <span class="field__error" data-track-error="order"></span>
+                  <span class="field__hint"
+                    >Format: RS-YYMMDD-XXXX (found in your confirmation)</span
+                  >
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="track-phone">
+                    Phone Number <span class="req">*</span>
+                  </label>
+                  <input
+                    class="input"
+                    id="track-phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="03XX XXXXXXX"
+                    autocomplete="tel"
+                    required
+                    data-track-phone
+                  />
+                  <span class="field__error" data-track-error="phone"></span>
+                  <span class="field__hint"
+                    >The number you entered at checkout</span
+                  >
+                </div>
+
+                <button
+                  class="btn btn--gold btn--lg btn--block track-form__submit"
+                  type="submit"
+                  data-track-submit
+                >
+                  <i data-lucide="search"></i>
+                  <span>Track Order</span>
+                </button>
+              </form>
+
+              <!-- Recent orders quick access -->
+              <div class="track-recent" data-track-recent hidden>
+                <p class="track-recent__title">
+                  <i data-lucide="history"></i>
+                  <span>Recent Orders In This Browser</span>
+                </p>
+                <ul class="track-recent__list" data-track-recent-list></ul>
+              </div>
+
+              <div class="track-help">
+                <p>
+                  Cannot find your reference?
+                  <a href="contact.html">Contact support</a> or check your
+                  <a href="order-confirmation.html">order confirmation</a>.
+                </p>
+              </div>
+            </div>
+
+            <!-- ================= RESULT AREA ================= -->
+            <div class="track-result" data-track-result>
+              <!-- Initial / empty state -->
+              <div class="track-placeholder" data-track-placeholder>
+                <div class="track-placeholder__icon">
+                  <i data-lucide="package-search"></i>
+                </div>
+                <h3 class="track-placeholder__title">
+                  Awaiting your order details
+                </h3>
+                <p class="track-placeholder__text">
+                  Fill in the form to view your order status, items and a demo
+                  progress timeline.
+                </p>
+              </div>
+
+              <!-- Not found -->
+              <div class="track-not-found" data-track-not-found hidden>
+                <div
+                  class="track-placeholder__icon track-placeholder__icon--error"
+                >
+                  <i data-lucide="search-x"></i>
+                </div>
+                <h3 class="track-placeholder__title">No matching order</h3>
+                <p class="track-placeholder__text" data-track-not-found-message>
+                  We could not find an order with those details. Please check
+                  the reference and phone number.
+                </p>
+                <a class="btn btn--outline" href="contact.html">Need help?</a>
+              </div>
+
+              <!-- Found order -->
+              <div class="track-detail" data-track-detail hidden>
+                <!-- Status header -->
+                <header class="track-detail__head">
+                  <div>
+                    <p class="track-detail__eyebrow">Order Reference</p>
+                    <p class="track-detail__number" data-track-number>
+                      RS-000000-0000
+                    </p>
+                  </div>
+                  <span class="track-detail__status" data-track-status-badge
+                    >Order Placed</span
+                  >
+                </header>
+
+                <!-- Timeline -->
+                <section class="track-timeline-block">
+                  <h3 class="track-block__title">Progress</h3>
+                  <ol class="track-timeline" data-track-timeline></ol>
+                </section>
+
+                <!-- Summary grid -->
+                <section class="track-block">
+                  <h3 class="track-block__title">Order Summary</h3>
+
+                  <div class="track-meta">
+                    <div class="track-meta__item">
+                      <span class="track-meta__label">Placed On</span>
+                      <span class="track-meta__value" data-track-date>—</span>
+                    </div>
+                    <div class="track-meta__item">
+                      <span class="track-meta__label">Payment</span>
+                      <span class="track-meta__value" data-track-payment
+                        >—</span
+                      >
+                    </div>
+                    <div class="track-meta__item">
+                      <span class="track-meta__label">Deliver To</span>
+                      <span class="track-meta__value" data-track-deliver
+                        >—</span
+                      >
+                    </div>
+                    <div class="track-meta__item">
+                      <span class="track-meta__label">Total</span>
+                      <span
+                        class="track-meta__value track-meta__value--strong"
+                        data-track-total
+                        >—</span
+                      >
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Items -->
+                <section class="track-block">
+                  <h3 class="track-block__title">Items</h3>
+                  <ul class="track-items" data-track-items></ul>
+                </section>
+
+                <!-- Actions -->
+                <div class="track-detail__actions">
+                  <a
+                    class="btn btn--gold"
+                    data-track-order-page
+                    href="order-confirmation.html"
+                  >
+                    <i data-lucide="file-text"></i>
+                    View Full Confirmation
+                  </a>
+                  <button
+                    class="btn btn--outline"
+                    type="button"
+                    data-track-clear
+                  >
+                    Track Another Order
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       HELP / FAQ STRIP
+  ============================================================ -->
+      <section class="section section--tinted track-help-section">
+        <div class="container container--narrow">
+          <header class="section__head">
+            <p class="eyebrow">Common Questions</p>
+            <h2 class="section__title">About Tracking</h2>
+          </header>
+
+          <div class="accordion">
+            <div class="accordion__item">
+              <button
+                class="accordion__trigger"
+                type="button"
+                aria-expanded="false"
+              >
+                Why can I not find my order?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="accordion__panel">
+                <div class="accordion__inner">
+                  Orders are stored only in the browser where the checkout was
+                  completed. If you placed the order on a different device,
+                  cleared your browser data, or used a private browsing window,
+                  the order will not be available here. This is a demo
+                  storefront — no server stores your orders.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button
+                class="accordion__trigger"
+                type="button"
+                aria-expanded="false"
+              >
+                What does each status mean?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="accordion__panel">
+                <div class="accordion__inner">
+                  The five statuses shown in the timeline are: Order Placed,
+                  Processing, Dispatched, Out for Delivery and Delivered. These
+                  are illustrative stages for a demo tracker — they do not
+                  reflect any real courier movement or logistics system.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button
+                class="accordion__trigger"
+                type="button"
+                aria-expanded="false"
+              >
+                Can I change my delivery address?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="accordion__panel">
+                <div class="accordion__inner">
+                  Because this storefront has no backend, orders cannot be
+                  modified after submission. In a live store, you would normally
+                  contact support as early as possible to request an address
+                  change before dispatch.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <button
+                class="accordion__trigger"
+                type="button"
+                aria-expanded="false"
+              >
+                Is this tracker connected to a courier?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="accordion__panel">
+                <div class="accordion__inner">
+                  No. This is a frontend-only demo. There is no integration with
+                  any courier or logistics provider. The timeline is generated
+                  locally from the order data saved in your browser.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/track-page.js"></script>
+  </body>
+</html>

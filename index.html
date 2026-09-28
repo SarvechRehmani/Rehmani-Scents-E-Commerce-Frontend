@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Rehmani Scents — Premium Perfumes & Luxury Fragrances in Pakistan
+    </title>
+    <meta
+      name="description"
+      content="Rehmani Scents crafts premium perfumes, oud, floral and fresh fragrances for men and women. Discover your signature scent with nationwide delivery across Pakistan."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/index.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Rehmani Scents — Premium Perfumes & Luxury Fragrances"
+    />
+    <meta
+      property="og:description"
+      content="Discover fragrances that leave a lasting impression. Premium perfumes, oud and gift sets with nationwide delivery."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1200&q=80"
+    />
+    <meta
+      property="og:url"
+      content="https://rehmaniscents.example/index.html"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- Theme bootstrap: prevents flash of wrong theme -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+
+    <!-- Organization structured data (demo business info) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Rehmani Scents",
+        "url": "https://rehmaniscents.example",
+        "description": "Premium perfume and luxury fragrance brand. Demo storefront.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@rehmaniscents.com",
+          "areaServed": "PK"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Header is rendered by js/header.js -->
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       SECTION 1 — HERO SLIDER
+      ============================================================ -->
+      <section class="hero" id="hero" aria-label="Featured fragrances">
+        <div class="hero__track" data-hero-track>
+          <article class="hero__slide is-active" data-hero-slide>
+            <img
+              class="hero__media"
+              src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1920&q=80"
+              alt="Luxury perfume bottle on a dark reflective surface"
+              fetchpriority="high"
+            />
+            <div class="hero__overlay"></div>
+            <div class="container hero__content">
+              <p class="eyebrow eyebrow--light">Rehmani Scents</p>
+              <h1 class="hero__title">Your Scent.<br />Your Signature.</h1>
+              <p class="hero__text">
+                Discover fragrances that leave a lasting impression.
+              </p>
+              <div class="hero__actions">
+                <a class="btn btn--gold" href="shop.html">Shop Now</a>
+                <a class="btn btn--ghost-light" href="collections.html"
+                  >Explore Collection</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="hero__slide" data-hero-slide>
+            <img
+              class="hero__media"
+              src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=1920&q=80"
+              alt="Elegant perfume flacon beside soft draped fabric"
+              loading="lazy"
+            />
+            <div class="hero__overlay"></div>
+            <div class="container hero__content">
+              <p class="eyebrow eyebrow--light">New Season</p>
+              <h2 class="hero__title">Crafted To Be Remembered</h2>
+              <p class="hero__text">
+                Refined fragrances for every moment and every mood.
+              </p>
+              <div class="hero__actions">
+                <a class="btn btn--gold" href="shop.html">Shop Now</a>
+                <a class="btn btn--ghost-light" href="collections.html"
+                  >Explore Collection</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="hero__slide" data-hero-slide>
+            <img
+              class="hero__media"
+              src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1920&q=80"
+              alt="Amber glass perfume bottle under warm studio lighting"
+              loading="lazy"
+            />
+            <div class="hero__overlay"></div>
+            <div class="container hero__content">
+              <p class="eyebrow eyebrow--light">The House</p>
+              <h2 class="hero__title">The Art Of Luxury</h2>
+              <p class="hero__text">
+                Find a fragrance that feels unmistakably yours.
+              </p>
+              <div class="hero__actions">
+                <a class="btn btn--gold" href="shop.html">Shop Now</a>
+                <a class="btn btn--ghost-light" href="about.html">Our Story</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <button
+          class="hero__nav hero__nav--prev"
+          type="button"
+          data-hero-prev
+          aria-label="Previous slide"
+        >
+          <i data-lucide="chevron-down"></i>
+        </button>
+        <button
+          class="hero__nav hero__nav--next"
+          type="button"
+          data-hero-next
+          aria-label="Next slide"
+        >
+          <i data-lucide="chevron-down"></i>
+        </button>
+        <div
+          class="hero__dots"
+          data-hero-dots
+          role="tablist"
+          aria-label="Hero slides"
+        ></div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 2 — BRAND BENEFITS
+  ============================================================ -->
+      <section class="benefits" aria-label="Why shop with us">
+        <div class="container benefits__grid">
+          <div class="benefit">
+            <i data-lucide="sparkles"></i>
+            <div>
+              <h3>Long-Lasting Fragrances</h3>
+              <p>Blended for depth and endurance.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <i data-lucide="leaf"></i>
+            <div>
+              <h3>Carefully Selected Notes</h3>
+              <p>Composed with intention and balance.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <i data-lucide="shield-check"></i>
+            <div>
+              <h3>Secure Shopping</h3>
+              <p>A calm, protected checkout experience.</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <i data-lucide="truck"></i>
+            <div>
+              <h3>Nationwide Delivery</h3>
+              <p>Across all major cities in Pakistan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 3 — SHOP BY COLLECTION
+  ============================================================ -->
+      <section class="section" aria-labelledby="collections-heading">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">Curated Edits</p>
+            <h2 id="collections-heading" class="section__title">
+              Shop By Collection
+            </h2>
+            <p class="section__lead">
+              Six directions, one house. Choose the mood that matches your
+              moment.
+            </p>
+          </header>
+
+          <div class="collection-grid" data-reveal>
+            <a class="collection-tile collection-tile--lg" href="men.html">
+              <img
+                src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=80"
+                alt="Masculine perfume collection"
+                loading="lazy"
+              />
+              <span class="collection-tile__overlay"></span>
+              <span class="collection-tile__body">
+                <span class="collection-tile__label">For Him</span>
+                <span class="collection-tile__cta"
+                  >Explore <i data-lucide="arrow-right"></i
+                ></span>
+              </span>
+            </a>
+
+            <a class="collection-tile collection-tile--lg" href="women.html">
+              <img
+                src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=1000&q=80"
+                alt="Feminine floral perfume collection"
+                loading="lazy"
+              />
+              <span class="collection-tile__overlay"></span>
+              <span class="collection-tile__body">
+                <span class="collection-tile__label">For Her</span>
+                <span class="collection-tile__cta"
+                  >Explore <i data-lucide="arrow-right"></i
+                ></span>
+              </span>
+            </a>
+
+            <a class="collection-tile" href="unisex.html">
+              <img
+                src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80"
+                alt="Unisex fragrance collection"
+                loading="lazy"
+              />
+              <span class="collection-tile__overlay"></span>
+              <span class="collection-tile__body">
+                <span class="collection-tile__label">Unisex</span>
+                <span class="collection-tile__cta"
+                  >Explore <i data-lucide="arrow-right"></i
+                ></span>
+              </span>
+            </a>
+
+            <a class="collection-tile" href="collections.html#oud">
+              <img
+                src="https://images.unsplash.com/photo-1610461888750-10bfc601b874?auto=format&fit=crop&w=800&q=80"
+                alt="Oud fragrance collection"
+                loading="lazy"
+              />
+              <span class="collection-tile__overlay"></span>
+              <span class="collection-tile__body">
+                <span class="collection-tile__label">Oud Collection</span>
+                <span class="collection-tile__cta"
+                  >Explore <i data-lucide="arrow-right"></i
+                ></span>
+              </span>
+            </a>
+
+            <a class="collection-tile" href="collections.html#fresh">
+              <img
+                src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80"
+                alt="Fresh citrus fragrance collection"
+                loading="lazy"
+              />
+              <span class="collection-tile__overlay"></span>
+              <span class="collection-tile__body">
+                <span class="collection-tile__label">Fresh Collection</span>
+                <span class="collection-tile__cta"
+                  >Explore <i data-lucide="arrow-right"></i
+                ></span>
+              </span>
+            </a>
+
+            <a class="collection-tile" href="collections.html#gift-sets">
+              <img
+                src="https://images.unsplash.com/photo-1608528577891-eb055944f2e7?auto=format&fit=crop&w=800&q=80"
+                alt="Perfume gift set presentation"
+                loading="lazy"
+              />
+              <span class="collection-tile__overlay"></span>
+              <span class="collection-tile__body">
+                <span class="collection-tile__label">Gift Sets</span>
+                <span class="collection-tile__cta"
+                  >Explore <i data-lucide="arrow-right"></i
+                ></span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 4 — BEST SELLERS
+  ============================================================ -->
+      <section
+        class="section section--tinted"
+        aria-labelledby="bestsellers-heading"
+      >
+        <div class="container">
+          <header class="section__head section__head--split">
+            <div>
+              <p class="eyebrow">Most Loved</p>
+              <h2 id="bestsellers-heading" class="section__title">
+                Best Sellers
+              </h2>
+            </div>
+            <a class="link-arrow" href="shop.html"
+              >View All <i data-lucide="arrow-right"></i
+            ></a>
+          </header>
+
+          <div
+            class="product-grid"
+            data-product-grid="best-sellers"
+            data-limit="8"
+          ></div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 5 — BRAND STORY
+  ============================================================ -->
+      <section class="section story" aria-labelledby="story-heading">
+        <div class="container story__grid">
+          <figure class="story__media" data-reveal>
+            <img
+              src="https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=1000&q=80"
+              alt="Perfumer arranging fragrance bottles in a studio"
+              loading="lazy"
+            />
+          </figure>
+
+          <div class="story__body" data-reveal>
+            <p class="eyebrow">Our Philosophy</p>
+            <h2 id="story-heading" class="section__title">
+              A Fragrance That Speaks Before You Do
+            </h2>
+            <p>
+              Rehmani Scents was built on a simple belief: a fragrance is not an
+              accessory, it is an introduction. Before a handshake, before a
+              sentence, there is a presence — and that presence is composed.
+            </p>
+            <p>
+              We work with layered accords rather than loud statements. Bergamot
+              settles into lavender, cedar softens into amber, oud is given room
+              to breathe. Every composition is built around restraint, because
+              the most memorable scents are the ones that unfold slowly.
+            </p>
+            <p>
+              Our house is made for people who treat scent as a form of
+              self-expression — chosen deliberately, worn confidently, and
+              remembered long after the room has emptied.
+            </p>
+            <a class="btn btn--outline" href="about.html">Discover Our Story</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 6 — FEATURED FRAGRANCE (VAYRON)
+  ============================================================ -->
+      <section class="section featured" aria-labelledby="featured-heading">
+        <div class="container featured__grid">
+          <div class="featured__media" data-reveal>
+            <img
+              data-featured-image
+              src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80"
+              alt="Vayron eau de parfum bottle"
+              loading="lazy"
+            />
+            <span class="featured__badge">Signature</span>
+          </div>
+
+          <div class="featured__body" data-reveal>
+            <p class="eyebrow">Featured Fragrance</p>
+            <h2 id="featured-heading" class="section__title">
+              Meet Your New Signature
+            </h2>
+
+            <h3 class="featured__name" data-featured-name>Vayron</h3>
+            <p class="featured__family" data-featured-family>Aromatic Woody</p>
+
+            <p class="featured__desc" data-featured-desc>
+              A crisp opening of bergamot and pepper gives way to a composed
+              heart of lavender and geranium, resting on a warm base of
+              cedarwood and amber.
+            </p>
+
+            <dl class="notes">
+              <div>
+                <dt>Top Notes</dt>
+                <dd data-featured-top>Bergamot, Pepper</dd>
+              </div>
+              <div>
+                <dt>Heart Notes</dt>
+                <dd data-featured-heart>Lavender, Geranium</dd>
+              </div>
+              <div>
+                <dt>Base Notes</dt>
+                <dd data-featured-base>Cedarwood, Amber</dd>
+              </div>
+            </dl>
+
+            <p class="featured__price" data-featured-price>Rs. 2,499</p>
+
+            <div class="featured__actions">
+              <a
+                class="btn btn--gold"
+                data-featured-link
+                href="product.html?id=vayron"
+                >View Fragrance</a
+              >
+              <button class="btn btn--outline" type="button" data-featured-add>
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 7 — NEW ARRIVALS
+  ============================================================ -->
+      <section class="section section--tinted" aria-labelledby="new-heading">
+        <div class="container">
+          <header class="section__head section__head--split">
+            <div>
+              <p class="eyebrow">Just Landed</p>
+              <h2 id="new-heading" class="section__title">New Arrivals</h2>
+            </div>
+            <a class="link-arrow" href="shop.html?sort=newest"
+              >View All New Arrivals <i data-lucide="arrow-right"></i
+            ></a>
+          </header>
+
+          <div
+            class="product-grid"
+            data-product-grid="new-arrivals"
+            data-limit="4"
+          ></div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 8 — FRAGRANCE FINDER
+  ============================================================ -->
+      <section class="section finder" aria-labelledby="finder-heading">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">Interactive</p>
+            <h2 id="finder-heading" class="section__title">Fragrance Finder</h2>
+            <p class="section__lead">
+              Tell us what you lean toward. We will show you where to begin.
+            </p>
+          </header>
+
+          <div
+            class="finder__options"
+            role="group"
+            aria-label="Choose a fragrance direction"
+          >
+            <button class="finder__option" type="button" data-finder="fresh">
+              <i data-lucide="citrus"></i><span>Fresh &amp; Citrusy</span>
+            </button>
+            <button class="finder__option" type="button" data-finder="woody">
+              <i data-lucide="trees"></i><span>Woody &amp; Masculine</span>
+            </button>
+            <button class="finder__option" type="button" data-finder="sweet">
+              <i data-lucide="flame"></i><span>Sweet &amp; Warm</span>
+            </button>
+            <button class="finder__option" type="button" data-finder="floral">
+              <i data-lucide="flower-2"></i><span>Floral &amp; Elegant</span>
+            </button>
+            <button class="finder__option" type="button" data-finder="oud">
+              <i data-lucide="gem"></i><span>Oud &amp; Intense</span>
+            </button>
+          </div>
+
+          <div class="finder__results" data-finder-results aria-live="polite">
+            <p class="finder__placeholder">
+              Select a direction above to reveal matching fragrances.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 9 — PROMOTIONAL BANNER
+  ============================================================ -->
+      <section class="promo" aria-labelledby="promo-heading">
+        <img
+          class="promo__bg"
+          src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        />
+        <div class="promo__overlay"></div>
+        <div class="container promo__content">
+          <p class="eyebrow eyebrow--light">Gift Edit</p>
+          <h2 id="promo-heading" class="promo__title">
+            The Perfect Scent, Beautifully Paired
+          </h2>
+          <p class="promo__text">
+            Curated duos and discovery sets, presented in signature packaging.
+          </p>
+          <a class="btn btn--gold" href="collections.html#gift-sets"
+            >Discover Gift Sets</a
+          >
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 10 — CUSTOMER REVIEWS (DEMO)
+  ============================================================ -->
+      <section class="section reviews" aria-labelledby="reviews-heading">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">Demo Testimonials</p>
+            <h2 id="reviews-heading" class="section__title">
+              What People Are Saying
+            </h2>
+            <p class="section__lead section__lead--note">
+              The following reviews are illustrative demo content for this
+              storefront and do not represent verified customer feedback.
+            </p>
+          </header>
+
+          <div class="reviews__viewport">
+            <div class="reviews__track" data-reviews-track>
+              <article class="review-card">
+                <div class="stars" aria-label="5 out of 5 stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i>
+                </div>
+                <p class="review-card__text">
+                  "Vayron opens sharp and settles into something quietly
+                  confident. It lasts through a full working day."
+                </p>
+                <footer class="review-card__meta">
+                  <span class="review-card__name">Demo — Ayesha K.</span>
+                  <span class="review-card__product">On Vayron</span>
+                </footer>
+              </article>
+
+              <article class="review-card">
+                <div class="stars" aria-label="4 out of 5 stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i>
+                </div>
+                <p class="review-card__text">
+                  "Royal Oud is rich without being heavy. I wear it for evening
+                  gatherings and it never feels like too much."
+                </p>
+                <footer class="review-card__meta">
+                  <span class="review-card__name">Demo — Bilal R.</span>
+                  <span class="review-card__product">On Royal Oud</span>
+                </footer>
+              </article>
+
+              <article class="review-card">
+                <div class="stars" aria-label="5 out of 5 stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i>
+                </div>
+                <p class="review-card__text">
+                  "Velvet Bloom is soft and elegant. The rose and vanilla
+                  balance is exactly what I was looking for."
+                </p>
+                <footer class="review-card__meta">
+                  <span class="review-card__name">Demo — Hira M.</span>
+                  <span class="review-card__product">On Velvet Bloom</span>
+                </footer>
+              </article>
+
+              <article class="review-card">
+                <div class="stars" aria-label="4 out of 5 stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i>
+                </div>
+                <p class="review-card__text">
+                  "Citrus Veil is my summer default. Light, clean and easy to
+                  wear in Karachi heat."
+                </p>
+                <footer class="review-card__meta">
+                  <span class="review-card__name">Demo — Usman T.</span>
+                  <span class="review-card__product">On Citrus Veil</span>
+                </footer>
+              </article>
+
+              <article class="review-card">
+                <div class="stars" aria-label="5 out of 5 stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i><i data-lucide="star"></i
+                  ><i data-lucide="star"></i>
+                </div>
+                <p class="review-card__text">
+                  "Midnight Leather is deep and grounded. The pepper at the top
+                  keeps it from feeling heavy."
+                </p>
+                <footer class="review-card__meta">
+                  <span class="review-card__name">Demo — Zain A.</span>
+                  <span class="review-card__product">On Midnight Leather</span>
+                </footer>
+              </article>
+            </div>
+          </div>
+
+          <div class="reviews__controls">
+            <button
+              class="icon-btn"
+              type="button"
+              data-reviews-prev
+              aria-label="Previous review"
+            >
+              <i data-lucide="arrow-left"></i>
+            </button>
+            <button
+              class="icon-btn"
+              type="button"
+              data-reviews-next
+              aria-label="Next review"
+            >
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 11 — INSTAGRAM GALLERY
+  ============================================================ -->
+      <section class="section instagram" aria-labelledby="instagram-heading">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">@rehmaniscents</p>
+            <h2 id="instagram-heading" class="section__title">
+              From The Campaign
+            </h2>
+          </header>
+
+          <div class="instagram__grid" data-reveal>
+            <a class="instagram__item" href="#" data-instagram>
+              <img
+                src="https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=600&q=80"
+                alt="Fragrance campaign still"
+                loading="lazy"
+              />
+            </a>
+            <a class="instagram__item" href="#" data-instagram>
+              <img
+                src="https://images.unsplash.com/photo-1619994403073-2cec844b8e63?auto=format&fit=crop&w=600&q=80"
+                alt="Perfume bottle detail shot"
+                loading="lazy"
+              />
+            </a>
+            <a class="instagram__item" href="#" data-instagram>
+              <img
+                src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=600&q=80"
+                alt="Perfume on marble surface"
+                loading="lazy"
+              />
+            </a>
+            <a class="instagram__item" href="#" data-instagram>
+              <img
+                src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80"
+                alt="Layered fragrance bottles"
+                loading="lazy"
+              />
+            </a>
+            <a class="instagram__item" href="#" data-instagram>
+              <img
+                src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80"
+                alt="Minimal perfume composition"
+                loading="lazy"
+              />
+            </a>
+            <a class="instagram__item" href="#" data-instagram>
+              <img
+                src="https://images.unsplash.com/photo-1608528577891-eb055944f2e7?auto=format&fit=crop&w=600&q=80"
+                alt="Gift set arrangement"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="instagram__cta">
+            <a class="btn btn--outline" data-instagram href="#">
+              <i data-lucide="instagram"></i> Follow On Instagram
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SECTION 12 — NEWSLETTER
+  ============================================================ -->
+      <section class="section newsletter" aria-labelledby="newsletter-heading">
+        <div class="container newsletter__inner">
+          <p class="eyebrow">Fragrance Journal</p>
+          <h2 id="newsletter-heading" class="section__title">
+            Let Good Things Linger
+          </h2>
+          <p class="section__lead">
+            Join the Rehmani Scents fragrance journal for new arrivals and
+            exclusive offers.
+          </p>
+
+          <form class="newsletter__form" data-newsletter novalidate>
+            <label class="sr-only" for="newsletter-email">Email address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="email"
+              placeholder="Your email address"
+              autocomplete="email"
+              required
+            />
+            <button class="btn btn--gold" type="submit">Subscribe</button>
+          </form>
+          <p
+            class="newsletter__note"
+            data-newsletter-msg
+            role="status"
+            aria-live="polite"
+          ></p>
+          <p class="newsletter__disclaimer">
+            Demo only — subscriptions are stored locally in your browser and are
+            not sent to a mailing service.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer is rendered by js/footer.js -->
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+
+    <!-- App -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

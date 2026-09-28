@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop All Fragrances — Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Browse the complete Rehmani Scents collection of premium perfumes. Filter by category, fragrance family, occasion, season and price. Nationwide delivery across Pakistan."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/shop.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shop All Fragrances — Rehmani Scents" />
+    <meta
+      property="og:description"
+      content="Browse premium perfumes for men, women and unisex. Filter by fragrance family, occasion and season."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1200&q=80"
+    />
+    <meta property="og:url" content="https://rehmaniscents.example/shop.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/category.css" />
+
+    <link rel="stylesheet" href="css/shop.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Shop All Fragrances",
+        "url": "https://rehmaniscents.example/shop.html",
+        "description": "Browse the complete Rehmani Scents collection of premium perfumes.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Rehmani Scents",
+          "url": "https://rehmaniscents.example"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       PAGE HERO
+  ============================================================ -->
+      <section class="category-hero" aria-label="Shop all fragrances">
+        <img
+          class="category-hero__media"
+          src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1920&q=80"
+          alt="Luxury perfume bottle on a dark reflective surface"
+          fetchpriority="high"
+        />
+        <div class="category-hero__overlay"></div>
+        <div class="container category-hero__content">
+          <nav class="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Home</a></li>
+              <li aria-current="page">Shop All</li>
+            </ol>
+          </nav>
+
+          <p class="eyebrow eyebrow--light">The Full Collection</p>
+          <h1 class="category-hero__title">All Fragrances</h1>
+          <p class="category-hero__text">
+            The complete Rehmani Scents collection — composed across fresh,
+            floral, woody and oud-forward families. Filter by mood, occasion or
+            season to find your signature.
+          </p>
+
+          <ul class="category-hero__meta">
+            <li>
+              <i data-lucide="package"></i>
+              <span data-shop-count>15 Fragrances</span>
+            </li>
+            <li>
+              <i data-lucide="sparkles"></i>
+              <span>From Rs. 1,999</span>
+            </li>
+            <li>
+              <i data-lucide="truck"></i>
+              <span>Nationwide Delivery</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       SHOP SECTION
+  ============================================================ -->
+      <section class="section shop-section">
+        <div class="container">
+          <div class="shop-layout">
+            <!-- ================= FILTERS SIDEBAR ================= -->
+            <aside
+              class="filters"
+              data-filters-panel
+              aria-label="Product filters"
+            >
+              <div class="filters__head">
+                <h2 class="filters__title">Filters</h2>
+                <button
+                  class="icon-btn filters__close"
+                  type="button"
+                  data-filters-close
+                  aria-label="Close filters"
+                >
+                  <i data-lucide="x"></i>
+                </button>
+              </div>
+
+              <form class="filters__form" data-filters-form>
+                <!-- Category -->
+                <div class="filter-group" data-filter-group="category">
+                  <button
+                    class="filter-group__title"
+                    type="button"
+                    aria-expanded="true"
+                    data-filter-toggle
+                  >
+                    Category <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="filter-group__body">
+                    <div
+                      class="filter-group__list"
+                      data-filter-list="category"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Price -->
+                <div class="filter-group" data-filter-group="price">
+                  <button
+                    class="filter-group__title"
+                    type="button"
+                    aria-expanded="true"
+                    data-filter-toggle
+                  >
+                    Price Range <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="filter-group__body">
+                    <div class="price-range">
+                      <div class="price-range__inputs">
+                        <label class="sr-only" for="price-min"
+                          >Minimum price</label
+                        >
+                        <input
+                          class="input"
+                          id="price-min"
+                          type="number"
+                          inputmode="numeric"
+                          min="0"
+                          step="100"
+                          placeholder="Min"
+                          data-price-min
+                        />
+                        <span>—</span>
+                        <label class="sr-only" for="price-max"
+                          >Maximum price</label
+                        >
+                        <input
+                          class="input"
+                          id="price-max"
+                          type="number"
+                          inputmode="numeric"
+                          min="0"
+                          step="100"
+                          placeholder="Max"
+                          data-price-max
+                        />
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="6000"
+                        step="100"
+                        value="6000"
+                        data-price-slider
+                        aria-label="Maximum price"
+                      />
+                      <p class="price-range__hint" data-price-display>
+                        Rs. 0 — Rs. 6,000
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Fragrance family -->
+                <div class="filter-group" data-filter-group="family">
+                  <button
+                    class="filter-group__title"
+                    type="button"
+                    aria-expanded="true"
+                    data-filter-toggle
+                  >
+                    Fragrance Family <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="filter-group__body">
+                    <div
+                      class="filter-group__list"
+                      data-filter-list="family"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Occasion -->
+                <div class="filter-group" data-filter-group="occasion">
+                  <button
+                    class="filter-group__title"
+                    type="button"
+                    aria-expanded="false"
+                    data-filter-toggle
+                  >
+                    Occasion <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="filter-group__body">
+                    <div
+                      class="filter-group__list"
+                      data-filter-list="occasion"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Season -->
+                <div class="filter-group" data-filter-group="season">
+                  <button
+                    class="filter-group__title"
+                    type="button"
+                    aria-expanded="false"
+                    data-filter-toggle
+                  >
+                    Season <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="filter-group__body">
+                    <div
+                      class="filter-group__list"
+                      data-filter-list="season"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Volume -->
+                <div class="filter-group" data-filter-group="volume">
+                  <button
+                    class="filter-group__title"
+                    type="button"
+                    aria-expanded="false"
+                    data-filter-toggle
+                  >
+                    Volume <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="filter-group__body">
+                    <div
+                      class="filter-group__list"
+                      data-filter-list="volume"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Availability -->
+                <div class="filter-group" data-filter-group="availability">
+                  <button
+                    class="filter-group__title"
+                    type="button"
+                    aria-expanded="false"
+                    data-filter-toggle
+                  >
+                    Availability <i data-lucide="chevron-down"></i>
+                  </button>
+                  <div class="filter-group__body">
+                    <div
+                      class="filter-group__list"
+                      data-filter-list="availability"
+                    ></div>
+                  </div>
+                </div>
+              </form>
+
+              <div class="filters__foot">
+                <button
+                  class="btn btn--dark btn--block"
+                  type="button"
+                  data-filters-apply
+                >
+                  View Results
+                </button>
+                <button class="filters__clear" type="button" data-filters-clear>
+                  Clear All Filters
+                </button>
+              </div>
+            </aside>
+
+            <!-- ================= MAIN COLUMN ================= -->
+            <div class="shop-main">
+              <!-- Toolbar -->
+              <div class="shop-toolbar">
+                <p class="shop-toolbar__count">
+                  <strong data-results-count>0</strong> fragrances
+                </p>
+
+                <div class="shop-toolbar__right">
+                  <button
+                    class="btn btn--outline btn--sm filter-toggle"
+                    type="button"
+                    data-filters-open
+                  >
+                    <i data-lucide="sliders-horizontal"></i> Filters
+                  </button>
+
+                  <label class="sr-only" for="sort-select">Sort by</label>
+                  <select class="select" id="sort-select" data-sort-select>
+                    <option value="featured">Sort: Featured</option>
+                    <option value="best-selling">Sort: Best Selling</option>
+                    <option value="newest">Sort: Newest</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Name: A to Z</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Active filter chips -->
+              <div class="active-filters" data-active-filters hidden></div>
+
+              <!-- Product grid -->
+              <div class="product-grid" data-shop-grid data-columns="3"></div>
+
+              <!-- Pagination -->
+              <nav
+                class="pagination"
+                data-pagination
+                aria-label="Product pagination"
+                hidden
+              ></nav>
+
+              <!-- Footer note -->
+              <p class="shop-note" data-shop-note>
+                All fragrance listings are fictional demo catalog entries.
+                Prices and availability are illustrative and not connected to
+                live inventory.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/shop-page.js"></script>
+  </body>
+</html>

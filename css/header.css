@@ -1,0 +1,630 @@
+/* ============================================================
+   css/header.css
+   Announcement bar, sticky header, nav, mega menu, mobile drawer,
+   search overlay.
+   
+   STICKY FIX: The wrapper (#site-header) is now the sticky
+   container, not the inner <header> element. This prevents the
+   header from becoming unstuck after scrolling past the wrapper's
+   boundary.
+   ============================================================ */
+
+/* ================= STICKY WRAPPER ================= */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  /* The wrapper itself has no background — that lives on
+     .site-header and .announce so the blur works correctly. */
+}
+
+/* ================= ANNOUNCEMENT ================= */
+.announce {
+  position: relative;
+  z-index: 1;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0.62rem var(--space-4);
+  line-height: 1.4;
+  max-height: 60px;
+  overflow: hidden;
+  transition:
+    max-height 0.32s var(--ease),
+    padding 0.32s var(--ease),
+    opacity 0.24s var(--ease);
+}
+.announce span {
+  display: inline-block;
+}
+.announce strong {
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
+}
+
+/* Collapse announcement when the page is scrolled */
+#site-header.is-scrolled .announce {
+  max-height: 0;
+  padding-block: 0;
+  opacity: 0;
+}
+
+/* ================= HEADER SHELL ================= */
+.site-header {
+  position: relative;
+  z-index: 1;
+  background: var(--color-header);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: var(--hairline) solid transparent;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+.site-header.is-stuck {
+  background: var(--color-header-solid);
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 1px 24px rgba(23, 20, 16, 0.07);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: var(--header-h);
+  transition: height var(--dur) var(--ease);
+}
+.site-header.is-stuck .site-header__inner {
+  height: var(--header-h-scrolled);
+}
+
+/* ================= WORDMARK ================= */
+.brand {
+  flex: none;
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+  color: var(--color-text);
+}
+.brand__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.16rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-wordmark);
+  text-transform: uppercase;
+  transition: color var(--dur) var(--ease);
+}
+.brand__sub {
+  margin-top: 4px;
+  font-size: 0.52rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.brand:hover .brand__name {
+  color: var(--color-accent);
+}
+
+/* ================= DESKTOP NAV ================= */
+.main-nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.main-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1.6vw, 1.5rem);
+  height: 100%;
+}
+
+.main-nav__item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.main-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 0.15rem;
+  font-size: 0.79rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+.main-nav__link svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.65;
+  transition: transform var(--dur) var(--ease);
+}
+.main-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+.main-nav__item:hover > .main-nav__link,
+.main-nav__link.is-active {
+  color: var(--color-accent);
+}
+.main-nav__item:hover > .main-nav__link::after,
+.main-nav__link.is-active::after {
+  transform: scaleX(1);
+}
+.main-nav__item:hover > .main-nav__link svg {
+  transform: rotate(180deg);
+}
+
+/* ================= MEGA MENU ================= */
+.mega {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  z-index: 5;
+  width: min(960px, calc(100vw - 3rem));
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  background: var(--color-surface);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    visibility var(--dur);
+}
+.main-nav__item:hover .mega,
+.main-nav__item:focus-within .mega {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.mega__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.mega__col-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+  padding-bottom: 0.6rem;
+  border-bottom: var(--hairline) solid var(--color-border);
+}
+
+.mega__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.mega__list a {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.mega__list a::before {
+  content: "";
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width var(--dur) var(--ease);
+}
+.mega__list a:hover {
+  color: var(--color-text);
+}
+.mega__list a:hover::before {
+  width: 12px;
+}
+
+.mega__promo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  color: #fff;
+}
+.mega__promo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-out);
+}
+.mega__promo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.7));
+}
+.mega__promo:hover img {
+  transform: scale(1.07);
+}
+.mega__promo-body {
+  position: relative;
+  z-index: 1;
+}
+.mega__promo-body span {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e8d5ac;
+  margin-bottom: 0.35rem;
+}
+.mega__promo-body strong {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ================= HEADER ACTIONS ================= */
+.header-actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+.header-actions .icon-btn {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* ================= MOBILE NAV DRAWER ================= */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: calc(var(--z-drawer) + 1);
+  display: flex;
+  flex-direction: column;
+  width: min(400px, 88vw);
+  height: 100%;
+  background: var(--color-surface);
+  border-right: var(--hairline) solid var(--color-border);
+  box-shadow: 18px 0 60px rgba(0, 0, 0, 0.22);
+  transform: translateX(-102%);
+  visibility: hidden;
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    visibility var(--dur-slow);
+}
+.mobile-nav.is-open {
+  transform: none;
+  visibility: visible;
+}
+
+.mobile-nav__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.3rem;
+  border-bottom: var(--hairline) solid var(--color-border);
+  flex: none;
+}
+
+.mobile-nav__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.3rem;
+  overscroll-behavior: contain;
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 1rem 0;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  border-bottom: var(--hairline) solid var(--color-border);
+}
+.mobile-nav__link svg {
+  width: 17px;
+  height: 17px;
+  color: var(--color-muted);
+}
+
+.mobile-nav__sub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0 1rem 0.2rem;
+}
+.mobile-nav__sub a {
+  padding: 0.42rem 0;
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+.mobile-nav__sub a:hover {
+  color: var(--color-accent);
+}
+
+.mobile-nav__foot {
+  flex: none;
+  padding: 1.3rem;
+  border-top: var(--hairline) solid var(--color-border);
+  background: var(--color-surface-2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.mobile-nav__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+/* ================= SEARCH OVERLAY ================= */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: var(--color-scrim);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  padding: clamp(1rem, 8vh, 5rem) var(--space-4) var(--space-4);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--dur) var(--ease),
+    visibility var(--dur);
+}
+.search-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-overlay__panel {
+  width: min(720px, 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: translateY(-14px);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.search-overlay.is-open .search-overlay__panel {
+  transform: none;
+}
+
+.search-overlay__head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.05rem 1.15rem;
+  border-bottom: var(--hairline) solid var(--color-border);
+  flex: none;
+}
+.search-overlay__head > svg {
+  flex: none;
+  width: 19px;
+  height: 19px;
+  color: var(--color-muted);
+}
+.search-overlay__head input {
+  flex: 1;
+  border: 0;
+  background: none;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  outline: none;
+}
+.search-overlay__head input::placeholder {
+  color: var(--color-subtle);
+}
+
+.search-overlay__results {
+  overflow-y: auto;
+  padding: 0.6rem;
+  overscroll-behavior: contain;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.7rem;
+  border-radius: var(--radius);
+  transition: background-color var(--dur-fast) var(--ease);
+}
+.search-result:hover,
+.search-result.is-active {
+  background: var(--color-surface-2);
+}
+
+.search-result__img {
+  flex: none;
+  width: 52px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+  background: var(--color-bg-alt);
+}
+.search-result__body {
+  min-width: 0;
+  flex: 1;
+}
+.search-result__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-result__meta {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+.search-result__price {
+  flex: none;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.search-overlay__hint {
+  padding: 1rem 1.15rem;
+  font-size: var(--fs-xs);
+  color: var(--color-subtle);
+  border-top: var(--hairline) solid var(--color-border);
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.search-overlay__hint kbd {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.4rem;
+  background: var(--color-bg-alt);
+  border: var(--hairline) solid var(--color-border);
+  border-radius: var(--radius-xs);
+  margin-right: 0.3rem;
+}
+
+.search-empty {
+  padding: 2.6rem 1.2rem;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: var(--fs-sm);
+}
+
+/* ================= REDUCED MOTION ================= */
+@media (prefers-reduced-motion: reduce) {
+  .announce,
+  .site-header,
+  .site-header__inner {
+    transition: none;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 1024px) {
+  .main-nav {
+    display: none;
+  }
+  .nav-toggle {
+    display: inline-grid;
+  }
+}
+/* ============================================================
+   MOBILE HEADER CLEANUP
+   ------------------------------------------------------------
+   On screens ≤1024px the drawer already carries:
+     • Theme toggle
+     • Wishlist link
+     • Track order link
+
+   So we hide those from the header on mobile. This keeps the
+   top bar clean and stops the hamburger from being squeezed
+   off-screen on narrow phones.
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  /* Hide duplicates from header actions */
+  .header-actions a[href="track-order.html"],
+  .header-actions a[href="wishlist.html"],
+  .header-actions [data-theme-toggle] {
+    display: none;
+  }
+
+  /* Tighten the header inner so nothing overflows */
+  .site-header__inner {
+    gap: 0.5rem;
+  }
+
+  /* Shrink gap between remaining icons */
+  .header-actions {
+    gap: 0;
+  }
+
+  /* Hamburger stays fixed on the left */
+  .nav-toggle {
+    flex: none;
+  }
+
+  /* Brand absorbs the remaining space and truncates gracefully */
+  .brand {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .brand__name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Extra-narrow phones (≤400px) — drop icon buttons to 34px */
+@media (max-width: 400px) {
+  .header-actions .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .header-actions .icon-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+  .nav-toggle {
+    width: 38px;
+    height: 38px;
+  }
+}

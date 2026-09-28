@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us — The House of Rehmani Scents</title>
+    <meta
+      name="description"
+      content="Rehmani Scents is a house built on composed, layered fragrances. Discover our philosophy, our approach to notes, and our commitment to quality."
+    />
+    <meta name="theme-color" content="#F8F6F1" />
+    <link rel="canonical" href="https://rehmaniscents.example/about.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="About Rehmani Scents" />
+    <meta
+      property="og:description"
+      content="A house built on composed, layered fragrances."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=1200&q=80"
+    />
+    <meta
+      property="og:url"
+      content="https://rehmaniscents.example/about.html"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/about-page.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("rs_theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About Rehmani Scents",
+        "url": "https://rehmaniscents.example/about.html",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Rehmani Scents",
+          "url": "https://rehmaniscents.example"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <main id="main">
+      <!-- ============================================================
+       HERO — cinematic
+  ============================================================ -->
+      <section class="about-hero" aria-label="About Rehmani Scents">
+        <img
+          class="about-hero__bg"
+          src="https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=1920&q=80"
+          alt="Perfumer's workbench with glass bottles and fragrance notes"
+          fetchpriority="high"
+        />
+        <div class="about-hero__overlay"></div>
+
+        <div class="container about-hero__content">
+          <nav class="breadcrumbs breadcrumbs--light" aria-label="Breadcrumb">
+            <ol class="breadcrumbs">
+              <li><a href="index.html">Home</a></li>
+              <li aria-current="page">About Us</li>
+            </ol>
+          </nav>
+
+          <p class="eyebrow eyebrow--light">The House</p>
+          <h1 class="about-hero__title">
+            We compose fragrances<br />the way letters are written.
+          </h1>
+          <p class="about-hero__lede">
+            Slowly. With intention. And in the hope that they will be remembered
+            long after they are read.
+          </p>
+
+          <ul class="about-hero__meta">
+            <li>
+              <span
+                class="about-hero__meta-num"
+                data-count-to="15"
+                data-count-suffix="+"
+                >15+</span
+              >
+              <span class="about-hero__meta-label">Compositions</span>
+            </li>
+            <li>
+              <span
+                class="about-hero__meta-num"
+                data-count-to="5"
+                data-count-suffix=""
+                >5</span
+              >
+              <span class="about-hero__meta-label">Fragrance Families</span>
+            </li>
+            <li>
+              <span
+                class="about-hero__meta-num"
+                data-count-to="100"
+                data-count-suffix="%"
+                >100%</span
+              >
+              <span class="about-hero__meta-label">Composed In-House</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       CHAPTER 01 — PHILOSOPHY
+  ============================================================ -->
+      <section class="about-chapter" aria-labelledby="about-philosophy">
+        <div class="container">
+          <header class="about-chapter__head">
+            <span class="about-chapter__num">01</span>
+            <div>
+              <p class="about-chapter__eyebrow">Our Philosophy</p>
+              <h2 id="about-philosophy" class="about-chapter__title">
+                Restraint is the rarest luxury.
+              </h2>
+            </div>
+          </header>
+
+          <div class="about-split">
+            <div class="about-split__body" data-reveal>
+              <p class="about-lede">
+                In a market full of loud statements, we chose a quieter
+                direction. The fragrances we compose are not designed to
+                announce themselves across a room — they are built to unfold
+                slowly, on the skin, in the presence of the person wearing them.
+              </p>
+              <p>
+                Rehmani Scents began with a simple question: what makes a
+                fragrance memorable? Not intensity. Not familiarity. What
+                lingers is composition — the way a bright opening settles into a
+                warm base, the way a single note is allowed to breathe before
+                the next one arrives.
+              </p>
+              <p>
+                We build every fragrance around that principle. Bergamot and
+                pepper open with clarity. Lavender and geranium carry a composed
+                middle. Cedar, amber and oud provide the kind of depth that
+                outlasts an evening.
+              </p>
+
+              <blockquote class="about-quote">
+                &ldquo;A fragrance is not an accessory. It is an introduction —
+                one that happens before a handshake, before a sentence, before
+                anything else is said.&rdquo;
+                <cite>— The House of Rehmani Scents</cite>
+              </blockquote>
+            </div>
+
+            <figure class="about-split__media" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=900&q=80"
+                alt="Minimal arrangement of fragrance bottles on a marble surface"
+                loading="lazy"
+              />
+              <figcaption>Studio still life, 2024</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       CHAPTER 02 — APPROACH (dark, full-bleed)
+  ============================================================ -->
+      <section class="about-dark" aria-labelledby="about-approach">
+        <div class="container">
+          <header class="about-chapter__head about-chapter__head--light">
+            <span class="about-chapter__num">02</span>
+            <div>
+              <p class="about-chapter__eyebrow">Our Approach</p>
+              <h2 id="about-approach" class="about-chapter__title">
+                Three layers. One composition.
+              </h2>
+            </div>
+          </header>
+
+          <p class="about-dark__lede">
+            Every fragrance we make is built on three deliberate layers. They do
+            not compete — they introduce each other, one after the other, over
+            the course of the wear.
+          </p>
+
+          <div class="about-layers">
+            <article class="about-layer">
+              <span class="about-layer__num">i</span>
+              <h3 class="about-layer__title">The Opening</h3>
+              <p class="about-layer__desc">
+                The first impression. Bright citrus, aromatic herbs or clean
+                spice — composed to catch the attention lightly rather than hold
+                it. Lasts 15 to 30 minutes on skin.
+              </p>
+              <p class="about-layer__notes">
+                Bergamot · Pepper · Lemon · Saffron
+              </p>
+            </article>
+
+            <article class="about-layer">
+              <span class="about-layer__num">ii</span>
+              <h3 class="about-layer__title">The Heart</h3>
+              <p class="about-layer__desc">
+                The character of the fragrance. This is where the composition
+                settles into its identity — floral, woody, or spice-led. It
+                carries the fragrance through the middle hours of wear.
+              </p>
+              <p class="about-layer__notes">Lavender · Rose · Jasmine · Oud</p>
+            </article>
+
+            <article class="about-layer">
+              <span class="about-layer__num">iii</span>
+              <h3 class="about-layer__title">The Base</h3>
+              <p class="about-layer__desc">
+                The memory. Warm, deep and long-lasting — this is what remains
+                on skin and fabric hours after application. Cedar, amber, musk
+                and sandalwood do the work here.
+              </p>
+              <p class="about-layer__notes">
+                Cedar · Amber · Musk · Sandalwood
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       CHAPTER 03 — VALUES
+  ============================================================ -->
+      <section class="about-chapter" aria-labelledby="about-values">
+        <div class="container">
+          <header class="about-chapter__head">
+            <span class="about-chapter__num">03</span>
+            <div>
+              <p class="about-chapter__eyebrow">Our Commitment</p>
+              <h2 id="about-values" class="about-chapter__title">
+                What we will not compromise on.
+              </h2>
+            </div>
+          </header>
+
+          <div class="about-values">
+            <article class="about-value" data-reveal>
+              <span class="about-value__icon"
+                ><i data-lucide="droplet"></i
+              ></span>
+              <h3 class="about-value__title">Composed For Depth</h3>
+              <p class="about-value__text">
+                We would rather release fewer fragrances than compromise on the
+                balance between opening, heart and base. Every composition is
+                reviewed across multiple wears before release.
+              </p>
+            </article>
+
+            <article class="about-value" data-reveal>
+              <span class="about-value__icon"><i data-lucide="leaf"></i></span>
+              <h3 class="about-value__title">Notes With Purpose</h3>
+              <p class="about-value__text">
+                No filler notes. No trend-chasing. Each ingredient is included
+                because it does a specific job within the composition — usually
+                to bridge the layer above it to the layer below.
+              </p>
+            </article>
+
+            <article class="about-value" data-reveal>
+              <span class="about-value__icon"
+                ><i data-lucide="shield-check"></i
+              ></span>
+              <h3 class="about-value__title">Sealed &amp; Checked</h3>
+              <p class="about-value__text">
+                Every bottle is sealed, quality-checked and packed before
+                dispatch. Fragrance is sensitive to heat and light — so is our
+                packaging.
+              </p>
+            </article>
+
+            <article class="about-value" data-reveal>
+              <span class="about-value__icon"
+                ><i data-lucide="heart-handshake"></i
+              ></span>
+              <h3 class="about-value__title">Honest Communication</h3>
+              <p class="about-value__text">
+                We do not make claims we cannot support. Our longevity and
+                performance descriptions are approximate and vary by skin type,
+                climate and application.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       CHAPTER 04 — STATS
+  ============================================================ -->
+      <section class="about-stats" aria-label="House facts">
+        <div class="container">
+          <div class="about-stats__grid">
+            <div class="about-stat">
+              <span
+                class="about-stat__num"
+                data-count-to="15"
+                data-count-suffix="+"
+                >0</span
+              >
+              <span class="about-stat__label">Fragrances Composed</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat__num" data-count-to="5">0</span>
+              <span class="about-stat__label">Families Explored</span>
+            </div>
+            <div class="about-stat">
+              <span
+                class="about-stat__num"
+                data-count-to="5000"
+                data-count-suffix="+"
+                >0</span
+              >
+              <span class="about-stat__label">Demo Samples Served</span>
+            </div>
+            <div class="about-stat">
+              <span
+                class="about-stat__num"
+                data-count-to="7"
+                data-count-suffix=" Days"
+                >0</span
+              >
+              <span class="about-stat__label">Exchange Window</span>
+            </div>
+          </div>
+
+          <p class="about-stats__note">
+            Figures are illustrative for this demo storefront and do not
+            represent verified business metrics.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+       CHAPTER 05 — CTA
+  ============================================================ -->
+      <section class="about-cta" aria-labelledby="about-cta-heading">
+        <div class="container about-cta__inner">
+          <p class="eyebrow">Find Yours</p>
+          <h2 id="about-cta-heading" class="about-cta__title">
+            Every fragrance here is waiting to be someone's signature.
+          </h2>
+          <p class="about-cta__lede">
+            Browse the collection, or start with the fragrance finder to narrow
+            the direction before you decide.
+          </p>
+
+          <div class="about-cta__actions">
+            <a class="btn btn--gold btn--lg" href="shop.html">
+              Shop All Fragrances
+            </a>
+            <a class="btn btn--outline btn--lg" href="collections.html">
+              Browse Collections
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Overlays -->
+    <div class="search-overlay" data-search-overlay aria-hidden="true">
+      <div
+        class="search-overlay__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search products"
+      >
+        <div class="search-overlay__head">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            placeholder="Search fragrances, notes, families…"
+            data-search-input
+            autocomplete="off"
+          />
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Close search"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="search-overlay__results" data-search-results></div>
+      </div>
+    </div>
+
+    <aside
+      class="drawer drawer--cart"
+      data-cart-drawer
+      aria-hidden="true"
+      aria-label="Shopping bag"
+    >
+      <div class="drawer__head">
+        <h2 class="drawer__title">Shopping Bag</h2>
+        <button
+          class="icon-btn"
+          type="button"
+          data-cart-close
+          aria-label="Close bag"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer__body" data-cart-body></div>
+      <div class="drawer__foot" data-cart-foot></div>
+    </aside>
+
+    <div class="scrim" data-scrim></div>
+
+    <button class="to-top" type="button" data-to-top aria-label="Back to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
+
+    <div
+      class="toasts"
+      data-toasts
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="js/about-page.js"></script>
+  </body>
+</html>
